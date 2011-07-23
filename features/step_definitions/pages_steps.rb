@@ -8,13 +8,13 @@ When 'I create a page:' do |table|
   visit admin_pages_path
   click_link 'Create a new page'
 
-  fill_in 'Title', :with => attributes['Title']
-  fill_in 'Content', :with => attributes['Content']
+  attributes.each do |field_name, value|
+    fill_in field_name, :with => value
+  end
 
   click_button 'Create Page'
 
   page.should have_content('Page was successfully created.')
-  page.should have_content(attributes['Title'])
 end
 
 When 'I update the "$title" page with:' do |title, table|
@@ -30,7 +30,6 @@ When 'I update the "$title" page with:' do |title, table|
   click_button 'Update Page'
 
   page.should have_content('Page was successfully updated.')
-  page.should have_content(attributes['Title']) if attributes['Title'].present?
 end
 
 When 'I delete the "$title" page' do |title|
