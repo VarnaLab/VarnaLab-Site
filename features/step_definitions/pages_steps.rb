@@ -33,8 +33,19 @@ When 'I update the "$title" page with:' do |title, table|
   page.should have_content(attributes['Title']) if attributes['Title'].present?
 end
 
+When 'I delete the "$title" page' do |title|
+  visit admin_pages_path
+  click_link "Delete '#{title}' page"
+
+  page.should have_content('Page was successfully destroyed.')
+end
+
 Then 'we should have the following page:' do |table|
   attributes = table.rows_hash
 
   Page.where(attributes).should have(1).page
+end
+
+Then 'we should have no pages' do
+  Page.count.should == 0
 end

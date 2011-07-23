@@ -18,3 +18,10 @@ Feature: Managing Pages
     Then we should have the following page:
       | Title   | About us    |
       | Content | This is ... |
+
+  Scenario: Deleting a page
+    Given a page "About us" exits
+    When I delete the "About us" page
+    Then we should have no pages
+
+
