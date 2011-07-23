@@ -2,7 +2,4 @@
 
 ul
   - @pages.each do |page|
-    li
-      ' #{page.title}
-      ' (#{link_to 'Edit', [:edit, :admin, page], :title => "Edit '#{page.title}' page"})
-      ' (#{link_to 'Delete', [:admin, page], :title => "Delete '#{page.title}' page", :method => :delete, :confirm => 'Are you sure'})
+    li #{page.title} ( #{link_to_edit page} | #{link_to_delete page} )
