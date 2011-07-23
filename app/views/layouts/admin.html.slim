@@ -1,0 +1,13 @@
+!doctype html
+
+html
+  head
+    meta charset="utf-8"
+    title VarnaLab::Admin
+    = stylesheet_link_tag 'admin'
+    = csrf_meta_tags
+  body
+    - if flash[:notice].present?
+      .notice = flash[:notice]
+    = yield
+    = javascript_include_tag 'admin'
