@@ -170,6 +170,7 @@ GEM
     slim (0.9.4)
       temple (~> 0.3.0)
       tilt (~> 1.2)
+    spork (0.8.5)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -215,6 +216,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   slim
+  spork
   sqlite3
   timecop
   uglifier
