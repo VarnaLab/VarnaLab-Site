@@ -10,3 +10,11 @@ Feature: Managing Pages
     Then we should have the following page:
       | Title   | About Us   |
       | Content | We are ... |
+
+  Scenario: Editing a page
+    Given a page "About us" exits
+    When I update the "About us" page with:
+      | Content | This is ... |
+    Then we should have the following page:
+      | Title   | About us    |
+      | Content | This is ... |
