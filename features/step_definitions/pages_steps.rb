@@ -45,6 +45,29 @@ When 'I try to create a blank page' do
   click_button 'Create Page'
 end
 
+When 'I start creating a subpage of "$name"' do |name|
+  visit admin_pages_path
+  click_link "Add a subpage of '#{name}'"
+end
+
+When 'I submit a the following page:' do |table|
+  attributes = table.rows_hash
+  attributes.each do |field_name, value|
+    fill_in field_name, :with => value
+  end
+
+  click_button "Create Page"
+
+  page.should have_content('Page was successfully created.')
+end
+
+Then 'we should have "$child_page_title" page as a subpage of "$parent_page_title"' do |child_page_title, parent_page_title|
+  parent = Page.find_by_name! parent_page_title
+  child  = Page.find_by_name! child_page_title
+
+  parent.children.should == [child]
+end
+
 Then 'I should see error messages' do
   page.should have_content('Some errors were found, please take a look:')
 end

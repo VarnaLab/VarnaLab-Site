@@ -27,3 +27,11 @@ Feature: Managing Pages
     Given a page "About us" exits
     When I delete the "About us" page
     Then we should have no pages
+
+  Scenario: Creating a sub page
+    Given a page "About us" exits
+    When I start creating a subpage of "About us"
+    And I submit a the following page:
+      | Name    | Contacts |
+      | Content | This is  |
+   Then we should have "Contacts" page as a subpage of "About us"

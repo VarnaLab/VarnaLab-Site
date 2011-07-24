@@ -1,6 +1,7 @@
 = simple_form_for [:admin, @page] do |form|
   = form.error_notification
   = form.input :name
+  = form.association :parent
   = form.input :content
   .buttons
     = form.button :submit
