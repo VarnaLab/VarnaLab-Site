@@ -39,6 +39,17 @@ When 'I delete the "$title" page' do |title|
   page.should have_content('Page was successfully destroyed.')
 end
 
+When 'I try to create a blank page' do
+  visit admin_pages_path
+  click_link 'Create a new page'
+  click_button 'Create Page'
+end
+
+Then 'I should see error messages' do
+  page.should have_content('Some errors were found, please take a look:')
+end
+
+
 Then 'we should have the following page:' do |table|
   attributes = table.rows_hash
 

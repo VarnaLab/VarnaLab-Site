@@ -11,6 +11,10 @@ Feature: Managing Pages
       | Title   | About Us   |
       | Content | We are ... |
 
+  Scenario: Try to create a blank page
+    When I try to create a blank page
+    Then I should see error messages
+
   Scenario: Editing a page
     Given a page "About us" exits
     When I update the "About us" page with:
