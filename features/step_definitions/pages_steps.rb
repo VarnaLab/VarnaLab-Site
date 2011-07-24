@@ -1,5 +1,5 @@
-Given 'a page "$title" exits' do |title|
-  Factory(:page, :title => title)
+Given 'a page "$name" exits' do |name|
+  Factory(:page, :name => name)
 end
 
 When 'I create a page:' do |table|
@@ -17,11 +17,11 @@ When 'I create a page:' do |table|
   page.should have_content('Page was successfully created.')
 end
 
-When 'I update the "$title" page with:' do |title, table|
+When 'I update the "$name" page with:' do |name, table|
   attributes = table.rows_hash
 
   visit admin_pages_path
-  click_link "Edit '#{title}' page"
+  click_link "Edit '#{name}' page"
 
   attributes.each do |field_name, value|
     fill_in field_name, :with => value
@@ -32,9 +32,9 @@ When 'I update the "$title" page with:' do |title, table|
   page.should have_content('Page was successfully updated.')
 end
 
-When 'I delete the "$title" page' do |title|
+When 'I delete the "$name" page' do |name|
   visit admin_pages_path
-  click_link "Delete '#{title}' page"
+  click_link "Delete '#{name}' page"
 
   page.should have_content('Page was successfully destroyed.')
 end

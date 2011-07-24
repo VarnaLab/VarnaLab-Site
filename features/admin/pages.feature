@@ -5,10 +5,10 @@ Feature: Managing Pages
 
   Scenario: Creating a page
     When I create a page:
-      | Title   | About Us   |
+      | Name    | About Us   |
       | Content | We are ... |
     Then we should have the following page:
-      | Title   | About Us   |
+      | Name    | About Us   |
       | Content | We are ... |
 
   Scenario: Try to create a blank page
@@ -20,12 +20,10 @@ Feature: Managing Pages
     When I update the "About us" page with:
       | Content | This is ... |
     Then we should have the following page:
-      | Title   | About us    |
+      | Name    | About us    |
       | Content | This is ... |
 
   Scenario: Deleting a page
     Given a page "About us" exits
     When I delete the "About us" page
     Then we should have no pages
-
-

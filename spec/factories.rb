@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :page do
-    title 'Page title'
+    name 'Page name'
     content 'Page content'
   end
 end
