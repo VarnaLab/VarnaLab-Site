@@ -2,26 +2,61 @@
 @import "compass/reset";
 
 @mixin background-gradient($top-color, $bottom-color) {
-  @include background-image(linear-gradient($top-color, $bottom-color));
+  @include linear-gradient(color-stops($top-color, $bottom-color));
   background-color: $bottom-color;
+}
+
+@mixin button($text-color, $start-color, $end-color) {
+  $shadow-color: darken($start-color, 10%);
+  $border-color: darken($end-color, 50%);
+
+  @include background-gradient($start-color, $end-color);
+  @include box-shadow(0 1px 0 $shadow-color);
+
+  &:hover,
+  &:focus { @include box-shadow(0 1px 0 $shadow-color, inset 3px -3px 15px $start-color, inset -3px -3px 15px $start-color); }
+  &:active { @include box-shadow(0 1px 0 $shadow-color, inset 3px -3px 15px $end-color, inset -3px -3px 15px $end-color, inset -3px 3px 15px $end-color); background: $start-color; }
+
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 1px solid $border-color;
+  color: $text-color;
 }
 
 body {
   background: #CFCFCF;
   color: #222;
-  font-family: Helvetica, arial, tahoma, verdana, sans-serif;
+  font-family: "Lucida Grande", Helvetica, arial, tahoma, verdana, sans-serif;
   font-size: 12px;
 }
 
-body > {
-  header { @include background-gradient(#454545, #1b1b1b); @include text-shadow(#000, 0px, 1px, 0px); @include box-shadow(#000, -5px, 0, 5px); text-align: center; min-width: 1000px; padding: 15px 0; }
-  header nav { display: inline-block; }
-  header nav a:first-child { @include border-radius(4px, 4px 0 0 4px); }
-  header nav a:last-child { @include border-radius(4px, 0 4px 4px 0); }
-  header nav a {  @include background-gradient(#606060, #141414); @include box-shadow(0 1px 0 #555); padding: 5px 15px; margin-left: -4px; border: 1px solid #111; color: #eee; text-decoration: none; }
-  header nav a:hover,
-  header nav a:focus { @include box-shadow(0 1px 0 #555, inset 3px -3px 15px #606060, inset -3px -3px 15px #606060); }
-  header nav a:active { @include box-shadow(0 1px 0 #555, inset 3px -3px 15px #141414, inset -3px -3px 15px #141414, inset -3px 3px 15px #141414); background: #606060; }
+body > header {
+  @include background-gradient(#454545, #1b1b1b);
+  @include text-shadow(#000, 0px, 1px, 0px);
+  @include box-shadow(#000 -5px 0 5px);
 
-  article { @include box-shadow(#000, 0, 1px, 2px); @include border-radius(10px); width: 980px; margin: 20px auto; padding: 20px; background: #fff; }
+  text-align: center;
+  min-width: 1000px;
+  padding: 15px 0;
+
+  nav { display: inline-block; }
+  nav a:first-child { @include border-radius(4px, 4px 0 0 4px); }
+  nav a:last-child { @include border-radius(4px, 0 4px 4px 0); }
+  nav a { margin-left: -4px; @include button(#eee, #606060, #141414); }
+}
+
+article {
+  @include box-shadow(#000, 0, 1px, 2px);
+  @include border-radius(5px);
+  width: 980px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fefffe;
+
+  header { @include background-gradient(#ddd, #a1a1a1); @include border-radius(5px 5px 0 0); @include box-shadow(inset 0 1px 0 #eee); @include text-shadow(0 1px 0 #eee); margin: -20px -20px 20px -20px; padding: 15px 20px; position: relative; border-bottom: 1px solid #555; }
+  header h1 { font-size: 16px; text-align: center; }
+  header nav { position: absolute; top: 16px; right: 10px; }
+  header a { @include button(#000, #f2f2f2, #b4b4b4); @include border-radius(5px); }
+  header > a { position: absolute; top: 12px; left: 14px; }
+  header > a:before { content: '←'; margin-right: 5px; }
 }
