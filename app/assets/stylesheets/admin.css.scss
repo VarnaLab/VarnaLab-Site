@@ -1,12 +1,14 @@
 @import "compass/css3";
 @import "compass/reset";
 
+$error: #af0100;
+
 @mixin background-gradient($top-color, $bottom-color) {
   @include linear-gradient(color-stops($top-color, $bottom-color));
   background-color: $bottom-color;
 }
 
-@mixin button($text-color, $start-color, $end-color) {
+@mixin base-button($text-color, $start-color, $end-color) {
   $shadow-color: darken($start-color, 10%);
   $border-color: darken($end-color, 50%);
 
@@ -21,6 +23,13 @@
   text-decoration: none;
   border: 1px solid $border-color;
   color: $text-color;
+  outline: 0;
+}
+
+@mixin button($start-color: #f2f2f2, $end-color: #b4b4b4) {
+  @include base-button(#000, $start-color, $end-color);
+  @include border-radius(5px);
+  @include text-shadow(0 1px 0 #eee);
 }
 
 body {
@@ -42,21 +51,49 @@ body > header {
   nav { display: inline-block; }
   nav a:first-child { @include border-radius(4px, 4px 0 0 4px); }
   nav a:last-child { @include border-radius(4px, 0 4px 4px 0); }
-  nav a { margin-left: -4px; @include button(#eee, #606060, #141414); }
+  nav a { margin-left: -4px; @include base-button(#eee, #606060, #141414); }
 }
 
 article {
   @include box-shadow(#000, 0, 1px, 2px);
   @include border-radius(5px);
-  width: 980px;
+  width: 1000px;
   margin: 20px auto;
-  padding: 20px;
   background: #fefffe;
 
-  header { @include background-gradient(#ddd, #a1a1a1); @include border-radius(5px 5px 0 0); @include box-shadow(inset 0 1px 0 #eee); @include text-shadow(0 1px 0 #eee); margin: -20px -20px 20px -20px; padding: 15px 20px; position: relative; border-bottom: 1px solid #555; }
+  header { @include background-gradient(#ddd, #a1a1a1); @include border-radius(5px 5px 0 0); @include box-shadow(inset 0 1px 0 #eee); @include text-shadow(0 1px 0 #eee); padding: 15px 20px; position: relative; border-bottom: 1px solid #555; }
   header h1 { font-size: 16px; text-align: center; }
   header nav { position: absolute; top: 16px; right: 10px; }
-  header a { @include button(#000, #f2f2f2, #b4b4b4); @include border-radius(5px); }
+  header a { @include button; }
   header > a { position: absolute; top: 12px; left: 14px; }
   header > a:before { content: '←'; margin-right: 5px; }
+}
+
+.simple_form {
+  input, select, textarea { font-size: 14px; }
+
+  input[type=text],
+  input[type=password],
+  input[type=tel],
+  input[type=email],
+  textarea { padding: 5px; border: 1px solid #aaa; width: 400px; }
+
+  select { width: 400px; }
+
+  label { display: block; margin: 0 0 5px 2px; font-size: 14px; }
+  fieldset { padding: 20px; }
+
+  .input + .input { margin-top: 15px; }
+
+  .buttons { border-top: 1px solid #000; padding: 20px; text-align: right; }
+  .button { @include button; }
+
+  .error { color: $error; margin-left: 10px; }
+  .error-notification { padding: 10px 20px; background: lighten($error, 10%); border-bottom: 2px solid $error; color: #fff; }
+  .error-notification:before { content: '!'; background: $error; @include box-shadow(darken($error, 10%) 0px 0px 6px); @include border-radius(10px); padding: 1px 7px; margin-right: 8px; }
+
+  .field-with-error {
+    input, textarea { border-color: $error; }
+    label { color: $error; }
+  }
 }
