@@ -97,3 +97,14 @@ article {
     label { color: $error; }
   }
 }
+
+#grid {
+  padding: 20px;
+
+  li { padding: 10px; @include border-radius(10px); border: 1px solid #000; position: relative; }
+  li + li { margin-top: 5px; }
+  li .actions { position: absolute; top: 10px; right: 15px; }
+  li .actions a { text-decoration: none; color: #000; }
+  li .actions a + a { margin-left: 10px; }
+  li .actions a:hover { text-decoration: underline; }
+}

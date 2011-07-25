@@ -2,6 +2,11 @@ header
   h1 Pages
   nav = link_to 'Create a new page', new_admin_page_path
 
-ul
+ul#grid
   - @pages.each do |page|
-    li #{page.name} ( #{link_to_adding_a_subpage page} |  #{link_to_edit page} | #{link_to_delete page} )
+    li
+      = page.name
+      .actions
+        = link_to_adding_a_subpage page
+        = link_to_edit page
+        = link_to_delete page
