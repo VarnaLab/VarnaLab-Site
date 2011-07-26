@@ -1,6 +1,8 @@
 FactoryGirl.define do
+  sequence(:name) { |n| "Name #{n}" }
+
   factory :page do
-    name 'Page name'
+    name
     content 'Page content'
   end
 end
