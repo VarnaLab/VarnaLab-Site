@@ -5,11 +5,4 @@ header
     = link_to_adding_a_subpage @page
     = link_to_edit @page
 
-ul#grid
-  - @page.children.each do |page|
-    li
-      = link_to page.name, [:admin, page]
-      .actions
-        = link_to_adding_a_subpage page
-        = link_to_edit page
-        = link_to_delete page
+ul#grid = render @page.children
