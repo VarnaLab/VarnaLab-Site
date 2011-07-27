@@ -37,6 +37,20 @@ When 'I start creating a subpage of "$name"' do |name|
   click_link "Add a subpage of '#{name}'"
 end
 
+Given '"$pages" page hierarchy exists' do |pages|
+  parent_page = nil
+  pages.split(' > ').each do |name|
+    parent_page = Factory(:page, :name => name, :parent => parent_page)
+  end
+end
+
+Then 'I should be able to edit and add subpages to "$page_name"' do |page_name|
+  page.should have_content(page_name)
+  page.should have_selector(%(a[title="Edit '#{page_name}' page"]))
+  page.should have_selector(%(a[title="Add a subpage of '#{page_name}'"]))
+end
+
+
 Then 'we should have "$child_page_title" page as a subpage of "$parent_page_title"' do |child_page_title, parent_page_title|
   parent = Page.find_by_name! parent_page_title
   child  = Page.find_by_name! child_page_title

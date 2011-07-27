@@ -38,3 +38,11 @@ Feature: Managing Pages
     Given a page "About us" exits
     When I delete the "About us" page
     Then we should have no pages
+
+  Scenario: Browsing sub-pages
+    Given "Menu > About us > Contact" page hierarchy exists
+    And I am on the admin pages page
+    When I follow "Menu"
+    And I follow "About us"
+    Then I should see "Contact"
+    And I should be able to edit and add subpages to "About us"

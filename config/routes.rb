@@ -1,6 +1,6 @@
 VarnaLab::Application.routes.draw do
   namespace :admin do
-    resources :pages, :only => [:index, :new, :create, :edit, :update, :destroy]
+    resources :pages
   end
 
   root :to => 'admin/pages#index'
