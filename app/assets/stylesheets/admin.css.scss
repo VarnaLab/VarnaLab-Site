@@ -65,6 +65,7 @@ article {
   header h1 { font-size: 16px; text-align: center; }
   header nav { position: absolute; top: 16px; right: 10px; }
   header a { @include button; }
+  header a + a { margin-left: 10px; }
   header > a { position: absolute; top: 12px; left: 14px; }
   header > a:before { content: '←'; margin-right: 5px; }
 }
