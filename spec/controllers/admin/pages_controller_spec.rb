@@ -14,38 +14,18 @@ describe Admin::PagesController do
   end
 
   describe "POST create" do
-    it "redirects to admin pages path if the new page is a root page" do
-      page.stub :root? => true
-
+    it "redirects to the new page" do
       preform_create_on page
 
-      response.should redirect_to(admin_pages_url)
-    end
-
-    it "redirects to the new page's parent admin page if the new page is not a root page" do
-      page.stub :root? => false, :parent => Factory.stub(:page)
-
-      preform_create_on page
-
-      response.should redirect_to(admin_page_url(page.parent))
+      response.should redirect_to(admin_page_url(page))
     end
   end
 
   describe "PUT update" do
-    it "redirects to admin pages path if page is a root page" do
-      page.stub :root? => true
-
+    it "redirects to the page" do
       preform_update_on page
 
-      response.should redirect_to(admin_pages_url)
-    end
-
-    it "redirects to the page's parent admin page if the page is not a root page" do
-      page.stub :root? => false, :parent => Factory.stub(:page)
-
-      preform_update_on page
-
-      response.should redirect_to(admin_page_url(page.parent))
+      response.should redirect_to(admin_page_url(page))
     end
   end
 end
