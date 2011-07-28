@@ -14,7 +14,7 @@ html
         = link_to 'Users', '#'
 
     - if flash[:notice].present?
-      .notice = flash[:notice]
+      .notice data-action="remove" = flash[:notice]
 
     article
       = yield
