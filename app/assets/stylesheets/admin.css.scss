@@ -70,6 +70,21 @@ article {
   header > a:before { content: '←'; margin-right: 5px; }
 }
 
+.notice {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: lighten(#141414, 8%);
+  border-top: 5px solid #141414;
+  padding: 20px;
+  text-align: center;
+  color: #eee;
+  @include text-shadow(#000, 0px, 1px, 0px);
+  font-size: 18px;
+  cursor: pointer;
+}
+
 .simple_form {
   input, select, textarea { font-size: 14px; }
 
