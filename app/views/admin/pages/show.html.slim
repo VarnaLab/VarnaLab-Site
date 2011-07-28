@@ -7,6 +7,6 @@ header
     = link_to_delete @page
 
 - if @page.children.empty?
-  p = @page.content
+  .content = simple_format @page.content
 - else
   ul#grid = render @page.children

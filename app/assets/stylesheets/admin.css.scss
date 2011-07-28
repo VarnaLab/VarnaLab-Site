@@ -1,5 +1,6 @@
 @import "compass/css3";
 @import "compass/reset";
+@import "compass/utilities/general/clearfix";
 
 $error: #af0100;
 
@@ -55,8 +56,10 @@ body > header {
 }
 
 article {
+  @include clearfix;
   @include box-shadow(#000, 0, 1px, 2px);
   @include border-radius(5px);
+
   width: 1000px;
   margin: 20px auto;
   background: #fefffe;
@@ -68,6 +71,9 @@ article {
   header a + a { margin-left: 10px; }
   header > a { position: absolute; top: 12px; left: 14px; }
   header > a:before { content: '←'; margin-right: 5px; }
+
+  .content { margin: 30px; padding: 20px; @include box-shadow(#666 0 0 4px); @include border-radius(5px); background: #E8E8E8; }
+  .content p + p { margin-top: 20px }
 }
 
 .notice {
