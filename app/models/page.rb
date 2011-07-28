@@ -6,4 +6,8 @@ class Page < ActiveRecord::Base
   has_many :children, :class_name => 'Page', :foreign_key => 'parent_id', :dependent => :destroy
 
   scope :root, where(:parent_id => nil)
+
+  def root?
+    parent_id.blank?
+  end
 end
