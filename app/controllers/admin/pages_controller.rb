@@ -7,17 +7,9 @@ class Admin::PagesController < Admin::BaseController
     @pages = Page.root
   end
 
-  def create
-    create! :location => go_to_after_save
-  end
-
-  def update
-    update! :location => go_to_after_save
-  end
-
   private
 
-  def go_to_after_save
+  def smart_resource_url
     unless @page.root?
       admin_page_path(@page.parent)
     else
