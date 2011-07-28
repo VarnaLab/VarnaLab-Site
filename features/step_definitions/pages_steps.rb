@@ -1,4 +1,4 @@
-Given 'a page "$name" exits' do |name|
+Given 'a page "$name" exists' do |name|
   Factory(:page, :name => name)
 end
 

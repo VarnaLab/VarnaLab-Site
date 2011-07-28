@@ -18,7 +18,7 @@ Feature: Managing Pages
     Then I should see error messages
 
   Scenario: Creating a sub page
-    Given a page "About us" exits
+    Given a page "About us" exists
     When I start creating a subpage of "About us"
     And I submit the following page:
       | Name    | Contacts |
@@ -26,7 +26,7 @@ Feature: Managing Pages
    Then we should have "Contacts" page as a subpage of "About us"
 
   Scenario: Editing a page
-    Given a page "About us" exits
+    Given a page "About us" exists
     When I start editing the "About us" page
     And I submit the following page:
       | Content | This is ... |
@@ -35,7 +35,7 @@ Feature: Managing Pages
       | Content | This is ... |
 
   Scenario: Deleting a page
-    Given a page "About us" exits
+    Given a page "About us" exists
     When I delete the "About us" page
     Then we should have no pages
 
