@@ -7,7 +7,21 @@ class Admin::PagesController < Admin::BaseController
     @pages = Page.root
   end
 
+  def create
+    create! :location => go_to_after_save
+  end
+
   def update
-    update! :location => resource.root? ? admin_pages_path : admin_page_path(resource.parent)
+    update! :location => go_to_after_save
+  end
+
+  private
+
+  def go_to_after_save
+    unless @page.root?
+      admin_page_path(@page.parent)
+    else
+      admin_pages_path
+    end
   end
 end
