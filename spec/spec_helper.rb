@@ -12,9 +12,6 @@ end
 Spork.each_run do
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-  FactoryGirl.factories.clear
-  Dir[Rails.root.join("spec/factories.rb")].each {|f| load f}
-
   VarnaLab::Application.reload_routes!
 
   RSpec.configure do |config|
