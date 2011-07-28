@@ -1,5 +1,9 @@
 class Admin::PagesController < Admin::BaseController
   inherit_resources
 
-  actions :index, :show, :new, :create, :edit, :update, :destroy
+  actions :show, :new, :create, :edit, :update, :destroy
+
+  def index
+    @pages = Page.root
+  end
 end
