@@ -6,4 +6,7 @@ header
     = link_to_edit @page
     = link_to_delete @page
 
-ul#grid = render @page.children
+- if @page.children.empty?
+  p = @page.content
+- else
+  ul#grid = render @page.children

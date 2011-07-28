@@ -71,3 +71,11 @@ end
 Then 'we should have no pages' do
   Page.count.should == 0
 end
+
+Then 'I should not be able to see the content of "$name"' do |name|
+  page.should_not have_content(Page.find_by_name!(name).content)
+end
+
+Then 'I should be able to see the content of "$name"' do |name|
+  page.should have_content(Page.find_by_name!(name).content)
+end

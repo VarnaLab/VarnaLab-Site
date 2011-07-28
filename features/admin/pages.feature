@@ -46,3 +46,9 @@ Feature: Managing Pages
     And I follow "About us"
     Then I should see "Contact"
     And I should be able to edit and add subpages to "About us"
+    But I should not be able to see the content of "About us"
+
+  Scenario: Browsing page without subpages
+    Given a page "About Us" exists
+    When I go to the "About Us" admin page
+    Then I should be able to see the content of "About Us"
