@@ -4,7 +4,7 @@ header
   nav
     = link_to_adding_a_subpage @page
     = link_to_edit @page
-    = link_to_delete @page
+    = link_to_delete @page, :remote => false
 
 - if @page.children.empty?
   .content = simple_format @page.content
