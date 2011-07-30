@@ -52,3 +52,8 @@ Feature: Managing Pages
     Given a page "About Us" exists
     When I go to the "About Us" admin page
     Then I should be able to see the content of "About Us"
+
+  Scenario: Toggling page visibility
+    Given a page "About us" exists
+    When I mark the "About us" page as invisible
+    Then the "About us" page should be invisible

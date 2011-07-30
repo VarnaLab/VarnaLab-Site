@@ -44,6 +44,18 @@ When 'I start creating a subpage of "$name"' do |name|
   click_link "Add a subpage of '#{name}'"
 end
 
+When 'I mark the "$name" page as invisible' do |name|
+  visit edit_admin_page_path(Page.find_by_name!(name))
+
+  uncheck 'Visible'
+
+  click_button 'Page'
+end
+
+Then 'the "$name" page should be invisible' do |name|
+  Page.find_by_name!(name).should_not be_visible
+end
+
 Then 'I should be able to edit and add subpages to "$page_name"' do |page_name|
   page.should have_content(page_name)
   page.should have_selector(%(a[title="Edit '#{page_name}' page"]))
