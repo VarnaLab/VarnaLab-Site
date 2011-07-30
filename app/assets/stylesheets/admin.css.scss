@@ -118,6 +118,14 @@ article {
     input, textarea { border-color: $error; }
     label { color: $error; }
   }
+
+  .boolean {
+    @include clearfix;
+
+    input { float: left; margin-right: 5px; }
+    label { float: left; margin-bottom: 0; }
+    label span { display: none; }
+  }
 }
 
 #grid {
