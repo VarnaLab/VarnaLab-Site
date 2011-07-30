@@ -4,7 +4,7 @@ module Admin::PagesHelper
   end
 
   def link_to_parent_page page
-    link_to 'Back', page.parent_id.present? ? admin_page_path(page.parent_id) : admin_pages_path
+    link_to 'Back', page.parent_id.present? ? admin_page_path(page.parent_id) : admin_pages_path, 'data-transition' => 'slide-left'
   end
 
   def page_status_box page

@@ -16,4 +16,8 @@ module Admin::BaseHelper
 
     link_to 'Delete', [:admin, resource], attributes
   end
+
+  def link_to_cancel path
+    link_to 'Cancel', path, 'data-transition' => 'slide-left'
+  end
 end
