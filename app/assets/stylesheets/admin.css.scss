@@ -131,10 +131,13 @@ article {
 #grid {
   padding: 20px;
 
-  li { padding: 10px; @include border-radius(10px); border: 1px solid #000; position: relative; }
+  li { padding: 10px 10px 10px 35px; @include border-radius(10px); border: 1px solid #000; position: relative; }
   li + li { margin-top: 5px; }
   li .actions { position: absolute; top: 10px; right: 15px; }
   li .actions a { text-decoration: none; color: #000; }
   li .actions a + a { margin-left: 10px; }
   li .actions a:hover { text-decoration: underline; }
+  
+  .status-box { position: absolute; top: 3px; left: 5px; width: 14px; height: 14px; @include border-radius(10px); margin: 5px; border: 1px solid; background: #bbffb6; border-color: #1fdf00; }
+  .status-box.invisible { background: #fdd; border-color: #fbb; }
 }
