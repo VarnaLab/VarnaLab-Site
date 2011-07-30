@@ -6,4 +6,8 @@ class Admin::PagesController < Admin::BaseController
   def index
     @pages = Page.root
   end
+
+  def destroy
+    destroy!
+  end
 end
