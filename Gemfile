@@ -24,6 +24,7 @@ gem 'spork'
 gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
+  gem 'active_reload'
   gem 'jasmine'
   gem 'sqlite3'
   gem 'rspec-rails'

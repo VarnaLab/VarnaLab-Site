@@ -26,6 +26,7 @@ GEM
       rack-test (~> 0.6.0)
       sprockets (~> 2.0.0.beta.10)
       tzinfo (~> 0.3.27)
+    active_reload (0.3.0)
     activemodel (3.1.0.rc4)
       activesupport (= 3.1.0.rc4)
       bcrypt-ruby (~> 2.1.4)
@@ -212,6 +213,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_reload
   appconfig
   capybara
   coffee-script
