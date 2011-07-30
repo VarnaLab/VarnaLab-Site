@@ -34,4 +34,20 @@ describe Admin::PagesController do
       response.should redirect_to(admin_page_url(page))
     end
   end
+
+  describe "DELETE destroy" do
+    before { page.stub :destroy }
+
+    it "sets the flash" do
+      delete :destroy, :id => 1
+
+      controller.should set_the_flash
+    end
+
+    it "doesn't set the flash on xhr requests'" do
+      xhr :delete, :destroy, :id => 1
+
+      controller.should_not set_the_flash
+    end
+  end
 end

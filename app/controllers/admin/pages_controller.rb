@@ -8,6 +8,6 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def destroy
-    destroy!
+    destroy! :flash => !request.xhr?
   end
 end
