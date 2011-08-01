@@ -4,7 +4,9 @@ module Admin::PagesHelper
   end
 
   def link_to_parent_page page
-    link_to 'Back', page.parent_id.present? ? admin_page_path(page.parent_id) : admin_pages_path, 'data-transition' => 'slide-left'
+    name, link = page.parent.present? ? [page.parent.name, admin_page_path(page.parent)] : ['Pages', admin_page_path]
+
+    link_to name.truncate(20), link, 'data-transition' => 'slide-left', :title => %Q(Go back to "#{name}")
   end
 
   def page_status_box page
