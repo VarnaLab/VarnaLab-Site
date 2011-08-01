@@ -1,0 +1,37 @@
+.simple_form {
+  input, select, textarea { font-size: 14px; }
+
+  input[type=text],
+  input[type=password],
+  input[type=tel],
+  input[type=email],
+  textarea { padding: 5px; border: 1px solid $border-color; width: 400px; }
+
+  select { width: 400px; }
+
+  label { display: block; margin: 0 0 5px 2px; font-size: 14px; }
+  fieldset { @include page-section }
+  fieldset + fieldset { margin-top: 20px; }
+
+  .input + .input { margin-top: 15px; }
+
+  .buttons { border-top: 1px solid $border-color; padding: 20px; text-align: right; }
+  .button { @include button; }
+
+  .error { color: $error; margin-left: 10px; }
+  .error-notification { padding: 10px 20px; background: lighten($error, 10%); border-bottom: 2px solid $error; color: #fff; }
+  .error-notification:before { content: '!'; background: $error; @include box-shadow(darken($error, 10%) 0px 0px 6px); @include border-radius(10px); padding: 1px 7px; margin-right: 8px; }
+
+  .field-with-error {
+    input, textarea { border-color: $error; }
+    label { color: $error; }
+  }
+
+  .boolean {
+    @include clearfix;
+
+    input { float: left; margin-right: 5px; }
+    label { float: left; margin-bottom: 0; }
+    label span { display: none; }
+  }
+}
