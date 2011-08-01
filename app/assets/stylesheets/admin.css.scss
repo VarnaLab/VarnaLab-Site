@@ -33,6 +33,13 @@ $error: #af0100;
   @include text-shadow(0 1px 0 #eee);
 }
 
+@mixin page-section {
+  @include box-shadow(#666 0 0 4px);
+  margin: 30px;
+  padding: 20px;
+  background: #E8E8E8;
+}
+
 body {
   background: #CFCFCF;
   color: #222;
@@ -72,7 +79,7 @@ article {
   header > a { position: absolute; top: 12px; left: 14px; }
   header > a:before { content: '←'; margin-right: 5px; }
 
-  .content { margin: 30px; padding: 20px; @include box-shadow(#666 0 0 4px); @include border-radius(5px); background: #E8E8E8; }
+  .content { @include page-section }
   .content p + p { margin-top: 20px }
 }
 
@@ -103,7 +110,8 @@ article {
   select { width: 400px; }
 
   label { display: block; margin: 0 0 5px 2px; font-size: 14px; }
-  fieldset { padding: 20px; }
+  fieldset { @include page-section }
+  fieldset + fieldset { margin-top: 20px; }
 
   .input + .input { margin-top: 15px; }
 
@@ -137,7 +145,7 @@ article {
   li .actions a { text-decoration: none; color: #000; }
   li .actions a + a { margin-left: 10px; }
   li .actions a:hover { text-decoration: underline; }
-  
+
   .status-box { position: absolute; top: 3px; left: 5px; width: 14px; height: 14px; @include border-radius(10px); margin: 5px; border: 1px solid; background: #bbffb6; border-color: #1fdf00; }
   .status-box.invisible { background: #fdd; border-color: #fbb; }
 }
