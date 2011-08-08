@@ -1,10 +1,10 @@
 module Admin::BaseHelper
-  def link_to_edit resource
+  def link_to_edit(resource)
     resource_name = resource.name
     link_to 'Edit', [:edit, :admin, resource], :title => "Edit '#{resource_name}' page"
   end
 
-  def link_to_delete resource, options = {}
+  def link_to_delete(resource, options = {})
     resource_name = resource.name
 
     attributes = {
@@ -17,7 +17,7 @@ module Admin::BaseHelper
     link_to 'Delete', [:admin, resource], attributes
   end
 
-  def link_to_cancel path
+  def link_to_cancel(path)
     link_to 'Cancel', path
   end
 end
