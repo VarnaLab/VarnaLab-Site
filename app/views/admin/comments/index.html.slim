@@ -6,3 +6,4 @@ ul
     li
       | ##{comment.id} - <strong>#{comment.commenter_name}</strong> <em>#{comment.commenter_email}</em>
       = simple_format comment.body
+      = link_to 'Hide', admin_comment_hide_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
