@@ -12,6 +12,9 @@ body {
   font-size: 12px;
 }
 
+strong { font-weight: bold; }
+em { font-style: italic; }
+
 body > header {
   @include background-gradient($header-gradient-start, $header-gradient-end);
   @include box-shadow($shadow-color -5px 0 5px);
