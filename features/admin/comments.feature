@@ -4,11 +4,7 @@ Feature: Comments Pages
   I want to be able read, manage and reply to comments
 
   Scenario: Hiding comments
-    Given a page "Big news" exists
-    And a visitor comments on "Big news" with "That's good"
+    Given a visitor have posted a comment "I like this"
     When I go to the admin comments page
-    And I hide the "That's good" comment
-    Then "That's good" comment should be hidden
-
-
-
+    And I hide the comment
+    Then the comment should be hidden
