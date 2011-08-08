@@ -10,8 +10,13 @@ describe Comment do
 
   it "can be hidden" do
     comment = Factory(:comment)
-    comment.should_not be_hidden
     comment.hide!
     comment.should be_hidden
+  end
+
+  it "can be shown" do
+    comment = Factory(:comment, :hidden => true)
+    comment.show!
+    comment.should_not be_hidden
   end
 end

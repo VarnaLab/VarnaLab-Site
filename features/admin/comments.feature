@@ -8,3 +8,12 @@ Feature: Comments Pages
     When I go to the admin comments page
     And I hide the comment
     Then the comment should be hidden
+
+  Scenario: Restoring hidden comments
+    Given a visitor have posted a comment "I like this"
+    And the comment was hidden
+    When I go to the admin comments page
+    And I show the comment
+    Then the comment should be visible
+
+

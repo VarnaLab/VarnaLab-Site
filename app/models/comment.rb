@@ -9,4 +9,9 @@ class Comment < ActiveRecord::Base
     self.hidden = true
     save!
   end
+
+  def show!
+    self.hidden = false
+    save!
+  end
 end
