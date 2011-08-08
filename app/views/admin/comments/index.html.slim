@@ -1,0 +1,8 @@
+header
+  h1 = title 'Comments'
+
+ul
+  - @comments.each do |comment|
+    li
+      | ##{comment.id} - <strong>#{comment.commenter_name}</strong> <em>#{comment.commenter_email}</em>
+      = simple_format comment.body
