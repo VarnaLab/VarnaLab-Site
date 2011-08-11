@@ -16,4 +16,12 @@ Feature: Comments Pages
     And I show the comment
     Then the comment should be visible
 
-
+  Scenario: Reviewing new comments
+    Given a visitor have posted a comment "I like this"
+    And another visitor have posted a comment "This is B******t"
+    When I go to the admin comments page
+    And I approve the comment "I like this"
+    And I hide the comment "This is B******t"
+    Then "I like this" comment should be visible
+    And "This is B******t" comment should be hidden
+    And there should be no unreviewed comments

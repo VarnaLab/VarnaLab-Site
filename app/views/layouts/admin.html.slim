@@ -9,7 +9,9 @@ html
     header
       nav
         = link_to 'Pages', admin_pages_path
-        = link_to 'Comments', admin_comments_path
+        = link_to admin_comments_path do
+          | Comments
+          = unreviewed_comments_badge
         = link_to 'Events', '#'
         = link_to 'Users', '#'
 
