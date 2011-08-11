@@ -6,6 +6,9 @@ class Comment < ActiveRecord::Base
 
   attr_protected :hidden
 
+  scope :hidden, where(:hidden => true)
+  scope :visible, where(:hidden => false)
+
   def hide!
     self.hidden = true
     save!

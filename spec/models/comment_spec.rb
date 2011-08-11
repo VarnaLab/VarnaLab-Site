@@ -19,4 +19,12 @@ describe Comment do
     comment.show!
     comment.should_not be_hidden
   end
+
+  it "can list hidden or visible comments" do
+    visible_comment = Factory(:comment, :hidden => false)
+    hidden_comment = Factory(:comment, :hidden => true)
+
+    Comment.hidden.should == [hidden_comment]
+    Comment.visible.should == [visible_comment]
+  end
 end

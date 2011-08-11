@@ -12,7 +12,7 @@ Feature: Comments Pages
   Scenario: Restoring hidden comments
     Given a visitor have posted a comment "I like this"
     And the comment was hidden
-    When I go to the admin comments page
+    When I go to the hidden admin comments page
     And I show the comment
     Then the comment should be visible
 

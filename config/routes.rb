@@ -4,6 +4,8 @@ VarnaLab::Application.routes.draw do
     resources :comments, :only => [:index] do
       post :hide, :to => 'comments/hide#create'
       delete :hide, :to => 'comments/hide#destroy'
+
+      get :hidden, :on => :collection
     end
   end
 
