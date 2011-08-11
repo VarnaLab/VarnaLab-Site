@@ -2,8 +2,8 @@ VarnaLab::Application.routes.draw do
   namespace :admin do
     resources :pages
     resources :comments, :only => [:index] do
-      post :hide, :to => 'comments/hide#create'
-      delete :hide, :to => 'comments/hide#destroy'
+      post :review, :to => 'comments/reviews#create'
+      delete :review, :to => 'comments/reviews#destroy'
 
       get :hidden, :on => :collection
     end
