@@ -12,6 +12,8 @@ ul
       = simple_format comment.body
       - if comment.hidden?
         = link_to 'Show', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Show comment ##{comment.id}"
+      - elsif comment.reviewed?
+        = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
       - else
         = link_to 'Approve', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Approve comment ##{comment.id}"
         = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
