@@ -1,15 +1,13 @@
 require 'spec_helper'
 
 describe Admin::CommentsController do
-  let(:comments) { [Factory.stub(:comment)] }
-
   describe "GET index" do
-    it "can assing comments as @comments" do
-      CommentPresenter.should_receive(:comments).with(:review => 'visible').and_return comments
+    it "assigns a comments presenter" do
+      Admin::CommentsPresenter.should_receive(:new).with(:review => 'visible').and_return 'presenter'
 
       get :index, :review => 'visible'
 
-      controller.should assign_to(:comments).with(comments)
+      controller.should assign_to(:presenter).with('presenter')
     end
   end
 end

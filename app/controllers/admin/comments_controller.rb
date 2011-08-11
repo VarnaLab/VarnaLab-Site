@@ -1,5 +1,5 @@
 class Admin::CommentsController < Admin::BaseController
   def index
-    @comments = Admin::CommentsPresenter.find_comments(params)
+    @presenter = Admin::CommentsPresenter.new(params)
   end
 end

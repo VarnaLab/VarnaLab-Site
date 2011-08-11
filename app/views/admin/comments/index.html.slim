@@ -1,12 +1,12 @@
 header
-  h1 = title 'Comments'
+  h1 = title "#{@presenter.review.titleize} Comments"
   nav
     = link_to 'Unreviewed', admin_comments_path
     = link_to 'Visible', visible_admin_comments_path
     = link_to 'Hidden', hidden_admin_comments_path
 
 ul
-  - @comments.each do |comment|
+  - @presenter.comments.each do |comment|
     li
       | ##{comment.id} - <strong>#{comment.commenter_name}</strong> <em>#{comment.commenter_email}</em>
       = simple_format comment.body
