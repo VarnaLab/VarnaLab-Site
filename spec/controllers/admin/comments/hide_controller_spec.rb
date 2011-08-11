@@ -3,13 +3,14 @@ require 'spec_helper'
 describe Admin::Comments::HideController do
   let(:comment) { Factory.stub(:comment) }
 
-  before { Comment.stub :find => comment }
+  before do
+    Comment.stub :find => comment
+    comment.stub :review_with!
+  end
 
   describe "POST 'create'" do
-    before { comment.stub :hide! }
-
     it "hides the comment" do
-      comment.should_receive(:hide!)
+      comment.should_receive(:review_with!).with(false)
 
       put :create, :comment_id => '1'
     end
@@ -28,10 +29,8 @@ describe Admin::Comments::HideController do
   end
 
   describe "DELETE 'destroy'" do
-    before { comment.stub :show! }
-
     it "shows the comment" do
-      comment.should_receive(:show!)
+      comment.should_receive(:review_with!).with(true)
 
       delete :destroy, :comment_id => '1'
     end

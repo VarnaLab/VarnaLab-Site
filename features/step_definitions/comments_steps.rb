@@ -3,7 +3,7 @@ Given /^a(?:nother)? visitor have posted a comment "([^"]+)"$/ do |comment_body|
 end
 
 Given 'the comment was hidden' do
-  @comment.hide!
+  @comment.review_with! false
 end
 
 When 'I hide the comment' do

@@ -29,14 +29,14 @@ describe Comment do
     subject { comment }
 
     describe "hiding" do
-      before { comment.hide! }
+      before { comment.review_with! false }
 
       it { should be_hidden }
       it { should be_reviewed }
     end
 
     describe "showing/approving" do
-      before { comment.show! }
+      before { comment.review_with! true }
 
       it { should_not be_hidden }
       it { should be_reviewed }

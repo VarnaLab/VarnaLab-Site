@@ -10,14 +10,8 @@ class Comment < ActiveRecord::Base
   scope :visible, where(:hidden => false)
   scope :unreviewed, where(:reviewed => false)
 
-  def hide!
-    self.hidden = true
-    self.reviewed = true
-    save!
-  end
-
-  def show!
-    self.hidden = false
+  def review_with!(approved)
+    self.hidden = !approved
     self.reviewed = true
     save!
   end
