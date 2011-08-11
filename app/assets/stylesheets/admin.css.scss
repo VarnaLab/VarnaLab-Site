@@ -1,6 +1,7 @@
 @import "compass/css3";
 @import "compass/reset";
 @import "compass/utilities/general/clearfix";
+@import "compass/utilities/text/ellipsis";
 
 @import "admin/variables";
 @import "admin/mixins";
@@ -26,7 +27,7 @@ body > header {
   nav { display: inline-block; }
   nav a:first-child { @include border-radius(4px, 4px 0 0 4px); }
   nav a:last-child { @include border-radius(4px, 0 4px 4px 0); }
-  nav a { margin-left: -4px; @include base-button($gray, lighten($header-gradient-start, 10%), $header-gradient-end); }
+  nav a { @include base-button($gray, lighten($header-gradient-start, 10%), $header-gradient-end); margin-left: -4px; position: relative; }
 }
 
 article {
@@ -48,6 +49,30 @@ article {
 
   .content { @include page-section }
   .content p + p { margin-top: 20px }
+}
+
+#unreviewed-comments-count {
+  @include border-radius(10px);
+  @include box-shadow(#000 0px 1px 3px);
+  @include text-shadow(0 -1px 0 $gray);
+  @include ellipsis;
+  @include background-gradient(#D60000, #900);
+  border: 2px solid white;
+  font-size: 10px;
+  font-weight: bold;
+  height: 15px;
+  line-height: 15px;
+  max-width: 20px;
+  min-width: 8px;
+  width: auto;
+  overflow: hidden;
+  padding: 1px 5px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  bottom: -15px;
+  right: -5px;
+  z-index: 1;
 }
 
 .notice {
