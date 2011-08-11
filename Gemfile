@@ -19,6 +19,7 @@ gem 'jquery-rails'
 
 gem 'simple_form'
 gem 'inherited_resources'
+gem 'kaminari'
 
 gem 'spork'
 gem 'ruby-debug19', :require => 'ruby-debug'

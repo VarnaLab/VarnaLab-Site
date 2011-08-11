@@ -3,7 +3,13 @@ class Admin::CommentsPresenter
 
   def initialize(params = {})
     @review = params[:review] || 'unreviewed'
-    @comments = case @review
+    @comments = comments_scope.order('created_at DESC').page(params[:page])
+  end
+
+  private
+
+  def comments_scope
+    case @review
       when 'visible'    then Comment.visible
       when 'hidden'     then Comment.hidden
       when 'unreviewed' then Comment.unreviewed

@@ -103,6 +103,8 @@ GEM
       thor (~> 0.14)
     json (1.5.3)
     json_pure (1.5.3)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     linecache19 (0.5.12)
@@ -225,6 +227,7 @@ DEPENDENCIES
   inherited_resources
   jasmine
   jquery-rails
+  kaminari
   launchy
   rails (= 3.1.0.rc5)
   rspec-rails
