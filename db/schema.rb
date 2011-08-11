@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808224101) do
+ActiveRecord::Schema.define(:version => 20110811221405) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",                      :null => false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20110808224101) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "hidden",           :default => false, :null => false
+    t.boolean  "reviewed",         :default => false, :null => false
   end
 
   create_table "pages", :force => true do |t|
