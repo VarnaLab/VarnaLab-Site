@@ -8,6 +8,9 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /^the ([a-z]+) admin comments page$/
+      admin_comments_path(:review => $1)
+
     when /^the home\s?page$/
       '/'
 

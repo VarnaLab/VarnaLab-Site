@@ -1,17 +1,9 @@
 class Admin::CommentsController < Admin::BaseController
   def index
-    @comments = Comment.unreviewed
-  end
-
-  def visible
-    @comments = Comment.visible
-
-    render 'index'
-  end
-
-  def hidden
-    @comments = Comment.hidden
-
-    render 'index'
+    @comments = case params[:review]
+      when 'visible' then Comment.visible
+      when 'hidden' then Comment.hidden
+      else Comment.unreviewed
+    end
   end
 end
