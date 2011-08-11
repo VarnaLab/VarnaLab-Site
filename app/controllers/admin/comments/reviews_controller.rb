@@ -2,13 +2,13 @@ class Admin::Comments::ReviewsController < Admin::BaseController
   def create
     find_comment.review_with! true
 
-    redirect_to admin_comments_path, :notice => 'The comment was successfully hidden'
+    redirect_to admin_comments_path, :notice => 'The comment was successfully marked as visible'
   end
 
   def destroy
     find_comment.review_with! false
 
-    redirect_to admin_comments_path, :notice => 'The comment was successfully marked as visible'
+    redirect_to admin_comments_path, :notice => 'The comment was successfully hidden'
   end
 
   private
