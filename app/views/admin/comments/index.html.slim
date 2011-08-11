@@ -1,6 +1,8 @@
 header
   h1 = title 'Comments'
   nav
+    = link_to 'Unreviewed', admin_comments_path
+    = link_to 'Visible', visible_admin_comments_path
     = link_to 'Hidden', hidden_admin_comments_path
 
 ul

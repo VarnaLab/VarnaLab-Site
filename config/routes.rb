@@ -6,6 +6,7 @@ VarnaLab::Application.routes.draw do
       delete :review, :to => 'comments/reviews#destroy'
 
       get :hidden, :on => :collection
+      get :visible, :on => :collection
     end
   end
 
