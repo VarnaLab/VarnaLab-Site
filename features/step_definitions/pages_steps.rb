@@ -1,8 +1,9 @@
-Given /^a page "([^"]+)"(?: with "([^"]+)" content)? exists$/ do |name, content|
-  attributes = {:name => name}
-  attributes[:content] ||= content
+Given 'a page "$name" exists' do |name|
+  Factory(:page, :name => name)
+end
 
-  Factory(:page, attributes)
+Given 'a page "$name" with "$content" content exists' do |name, content|
+  Factory(:page, :name => name, :content => content)
 end
 
 Given '"$pages" page hierarchy exists' do |pages|
