@@ -10,4 +10,5 @@ VarnaLab::Application.routes.draw do
   end
 
   root :to => 'admin/pages#index'
+  root :to => 'pages#index'
 end
