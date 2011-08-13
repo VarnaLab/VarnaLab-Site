@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::Reviews::HideController do
+describe Admin::Comments::ReviewsController do
   let(:comment) { Factory.stub(:comment) }
 
   before do
