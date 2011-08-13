@@ -4,7 +4,7 @@ class Admin::PagesController < Admin::BaseController
   actions :show, :new, :create, :update, :edit, :destroy
 
   def index
-    @pages = Page.root
+    @pages = Page.roots
   end
 
   def destroy

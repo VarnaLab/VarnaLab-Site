@@ -7,7 +7,7 @@ describe Admin::PagesController do
 
   describe "GET index" do
     it "assigns the root pages" do
-      Page.should_receive(:root).and_return 'root_pages'
+      Page.should_receive(:roots).and_return 'root_pages'
 
       get :index
 
