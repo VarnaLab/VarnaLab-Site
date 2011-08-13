@@ -9,6 +9,7 @@ VarnaLab::Application.routes.draw do
     end
   end
 
-  root :to => 'admin/pages#index'
+  resources :pages, :only => [:show]
+
   root :to => 'pages#index'
 end

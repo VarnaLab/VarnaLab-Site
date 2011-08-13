@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    = title_tag
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+    nav
+      = link_to 'Home', root_path
+      - Page.roots.each do |page|
+        = link_to page.name, page
+
+    = yield

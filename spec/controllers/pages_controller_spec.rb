@@ -9,4 +9,12 @@ describe PagesController do
       response.should be_success
     end
   end
+
+  describe "GET 'show'" do
+    it "assings the page as @page" do
+      Page.should_receive(:find).with('1').and_return page
+
+      get :show, :id => '1'
+    end
+  end
 end
