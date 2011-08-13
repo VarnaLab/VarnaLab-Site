@@ -6,6 +6,9 @@ header
     = link_to_edit @page
     = link_to_delete @page, :remote => false
 
+- if @page.hidden?
+  .hidden-marker
+
 - if @page.children.empty?
   .content = simple_format @page.content
 - else

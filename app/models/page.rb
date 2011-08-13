@@ -11,4 +11,8 @@ class Page < ActiveRecord::Base
   def visible_children
     children.visible
   end
+
+  def hidden?
+    not visible
+  end
 end
