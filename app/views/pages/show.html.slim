@@ -1,3 +1,8 @@
 h1 = title @page.name
 
+- unless @page.visible_children.empty?
+  ul
+    - @page.visible_children.each do |page|
+      li = link_to page.name, page
+
 = simple_format @page.content

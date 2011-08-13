@@ -5,6 +5,10 @@ class Page < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   acts_as_nested_set
-  
+
   scope :visible, where(:visible => true)
+
+  def visible_children
+    children.visible
+  end
 end

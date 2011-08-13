@@ -16,3 +16,10 @@ Feature: Browsing pages
     Then I should not find this page
     And I should not see "Top Secret"
 
+  Scenario: Browsing sub-pages
+    Given "About us > Contacts" page hierarchy exists
+    And I am on the root page
+    When I follow "About us"
+    And I follow "Contacts"
+    Then I should be on the "Contacts" page
+

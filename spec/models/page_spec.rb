@@ -9,6 +9,15 @@ describe Page do
   it { should have_many(:children) }
   it { should have_many(:comments) }
 
+  it "can give its visible chidren" do
+    parent = Factory(:page)
+
+    visible_child = Factory(:page, :parent => parent, :visible => true)
+    hidden_child = Factory(:page, :parent => parent, :visible => false)
+
+    parent.visible_children.should == [visible_child]
+  end
+
   describe "scopes" do
     it "has visible pages" do
       visible_page = Factory(:page, :visible => true)
