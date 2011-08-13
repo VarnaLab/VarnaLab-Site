@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/collectiveidea/awesome_nested_set.git
+  revision: 75cfe9015f69bf2cc4953a9215da118f18148997
+  specs:
+    awesome_nested_set (2.0.1)
+      activerecord (>= 3.0.0)
+
+GIT
   remote: https://github.com/chriseppstein/compass.git
   revision: 91a748a916360057b5caf6ea85cd38441d3b257a
   branch: rails31
@@ -217,6 +224,7 @@ PLATFORMS
 DEPENDENCIES
   active_reload
   appconfig
+  awesome_nested_set!
   capybara
   coffee-script
   compass!

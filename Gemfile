@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'kaminari'
+gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 gem 'spork'
 gem 'ruby-debug19', :require => 'ruby-debug'
