@@ -13,6 +13,10 @@ Given '"$pages" page hierarchy exists' do |pages|
   end
 end
 
+Given 'a hidden page "$name" exists' do |name|
+  Factory(:page, :name => name, :visible => false)
+end
+
 When 'I start creating a page' do
   visit admin_pages_path
   click_link 'Create a new page'
@@ -93,4 +97,8 @@ end
 
 Then 'I should be able to see the content of "$name"' do |name|
   page.should have_content(Page.find_by_name!(name).content)
+end
+
+Then 'I should not find this page' do
+  page.driver.status_code.should == 404
 end

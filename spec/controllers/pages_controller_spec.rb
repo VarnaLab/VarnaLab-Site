@@ -12,7 +12,7 @@ describe PagesController do
 
   describe "GET 'show'" do
     it "assings the page as @page" do
-      Page.should_receive(:find).with('1').and_return page
+      controller.should_receive(:find_page).with('1').and_return page
 
       get :show, :id => '1'
     end

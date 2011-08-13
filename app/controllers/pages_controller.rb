@@ -3,6 +3,12 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find(params[:id])
+    @page = find_page(params[:id])
+  end
+
+  private
+
+  def find_page(id)
+    Page.visible.find(id)
   end
 end

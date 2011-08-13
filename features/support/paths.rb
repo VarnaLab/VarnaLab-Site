@@ -11,6 +11,8 @@ module NavigationHelpers
     when /^the ([a-z]+) admin comments page$/
       admin_comments_path(:review => $1)
 
+    when /^the "([^"]+)" page$/
+      page_path(Page.find_by_name! $1)
     when /^the home\s?page$/
       '/'
 

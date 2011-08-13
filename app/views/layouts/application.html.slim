@@ -8,7 +8,7 @@ html
   body
     nav
       = link_to 'Home', root_path
-      - Page.roots.each do |page|
+      - Page.visible.roots.each do |page|
         = link_to page.name, page
 
     = yield

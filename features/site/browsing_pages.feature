@@ -10,3 +10,9 @@ Feature: Browsing pages
     Then I should see "Contacts"
     And I should see "We are.."
 
+  Scenario: Hidden pages
+    Given a hidden page "Top Secret" exists
+    When I go to the "Top Secret" page
+    Then I should not find this page
+    And I should not see "Top Secret"
+
