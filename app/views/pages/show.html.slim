@@ -7,14 +7,5 @@ h1 = title @page.name
 
 = simple_format @page.content
 
-- @page.comments.visible.each do |comment|
-  = content_tag_for :div, comment do
-    strong = comment.commenter_name
-    = simple_format comment.body
-
-= simple_form_for [@page, @comment || Comment.new], :url => page_comments_path(@page, :anchor => 'new_comment'), do |form|
-  = form.error_notification
-  = form.input :commenter_name, :label => 'Name'
-  = form.input :commenter_email, :label => 'E-mail'
-  = form.input :body, :label => 'Comment', :as => :text
-  = form.button :submit
+= render @page.comments
+= render 'comments/form'

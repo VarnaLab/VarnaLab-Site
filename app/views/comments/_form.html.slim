@@ -1,0 +1,6 @@
+= simple_form_for [@page, @comment || Comment.new], :url => page_comments_path(@page, :anchor => 'new_comment'), do |form|
+  = form.error_notification
+  = form.input :commenter_name, :label => 'Name'
+  = form.input :commenter_email, :label => 'E-mail'
+  = form.input :body, :label => 'Comment', :as => :text
+  = form.button :submit
