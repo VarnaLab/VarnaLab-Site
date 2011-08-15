@@ -24,24 +24,25 @@ When 'I approve the comment "$text"' do |comment_body|
   click_link "Approve comment ##{comment.id}"
 end
 
-When 'I leave "$text" comment on "$name" page' do |comment_body, page_name|
-  page = Page.find_by_name!(page_name)
-
-  visit page_path(page)
-
+When 'I fill in "$text" comment' do |comment_body|
   fill_in 'Name', :with => 'My Name'
   fill_in 'E-mail', :with => 'my.email@example.com'
   fill_in 'Comment', :with => comment_body
+end
 
+When 'I submit the comment' do
   click_button 'Comment'
 end
 
+When 'I leave "$text" comment on "$name" page' do |comment_body, page_name|
+  When %Q(I go to the "#{page_name}" page)
+  And %Q(I fill in "#{comment_body}" comment)
+  And %Q(I submit the comment)
+end
+
 When 'I try to leave blank comment on "$name" page' do |page_name|
-  page = Page.find_by_name!(page_name)
-
-  visit page_path(page)
-
-  click_button 'Comment'
+  When %Q(I go to the "#{page_name}" page)
+  And %Q(I submit the comment)
 end
 
 Then 'the comment should be hidden' do
