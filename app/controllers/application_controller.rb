@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def record_not_found
     render 'shared/_record_not_found', :layout => 'application', :status => 404
   end
+
+  def find_page(id)
+    Page.visible.find(id)
+  end
 end

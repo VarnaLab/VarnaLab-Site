@@ -24,6 +24,18 @@ When 'I approve the comment "$text"' do |comment_body|
   click_link "Approve comment ##{comment.id}"
 end
 
+When 'I leave "$text" comment on "$name" page' do |comment_body, page_name|
+  page = Page.find_by_name!(page_name)
+
+  visit page_path(page)
+
+  fill_in 'Name', :with => 'My Name'
+  fill_in 'E-mail', :with => 'my.email@example.com'
+  fill_in 'Comment', :with => comment_body
+
+  click_button 'Comment'
+end
+
 Then 'the comment should be hidden' do
   @comment.reload
   @comment.should be_hidden
@@ -49,3 +61,13 @@ Then 'there should be no unreviewed comments' do
     page.should have_content('0')
   end
 end
+
+Then '"$name" page should have one comment' do |page_name|
+  page = Page.find_by_name!(page_name)
+  page.reload.should have(1).comment
+end
+
+Then 'I should see "$text" comment' do |comment_body|
+  page.should have_content(comment_body)
+end
+

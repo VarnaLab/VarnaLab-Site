@@ -9,7 +9,9 @@ VarnaLab::Application.routes.draw do
     end
   end
 
-  resources :pages, :only => [:show]
+  resources :pages, :only => [:show] do
+    resources :comments, :only => [:create]
+  end
 
   root :to => 'pages#index'
 end

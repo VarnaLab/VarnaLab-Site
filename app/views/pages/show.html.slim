@@ -6,3 +6,14 @@ h1 = title @page.name
       li = link_to page.name, page
 
 = simple_format @page.content
+
+- @page.comments.visible.each do |comment|
+  = content_tag_for :div, comment do
+    strong = comment.commenter_name
+    = simple_format comment.body
+
+= simple_form_for [@page, Comment.new] do |form|
+  = form.input :commenter_name, :label => 'Name'
+  = form.input :commenter_email, :label => 'E-mail'
+  = form.input :body, :label => 'Comment', :as => :text
+  = form.button :submit
