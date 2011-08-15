@@ -7,5 +7,5 @@ h1 = title @page.name
 
 = simple_format @page.content
 
-= render @page.comments.visible
+= render @page.visible_comments
 = render 'comments/form'

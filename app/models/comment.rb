@@ -20,5 +20,13 @@ class Comment < ActiveRecord::Base
     def self.included(base)
       base.has_many :comments, :as => :commentable
     end
+
+    def build_comment(attributes = {})
+      comments.build(attributes)
+    end
+
+    def visible_comments
+      comments.visible
+    end
   end
 end

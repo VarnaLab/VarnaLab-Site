@@ -7,7 +7,7 @@ describe CommentsController do
   describe "POST 'create'" do
     before do
       controller.stub :find_page => page
-      page.comments.stub :build => comment
+      page.stub :build_comment => comment
       comment.stub :save => true
     end
 
@@ -20,7 +20,7 @@ describe CommentsController do
     end
 
     it "assigns the new comment as @comment" do
-      page.comments.should_receive(:build).with('these' => 'values').and_return comment
+      page.should_receive(:build_comment).with('these' => 'values').and_return comment
 
       post :create, :page_id => '1', :comment => {'these' => 'values'}
 
