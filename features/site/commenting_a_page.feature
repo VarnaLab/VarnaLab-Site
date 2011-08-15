@@ -9,7 +9,8 @@ Feature: Commenting a page
     Then "Big news" page should have one comment
     And I should see "Great news" comment
 
-
-
-
-
+  Scenario: Try to submit invalid comment
+    Given a page "Big news" exists
+    When I try to leave blank comment on "Big news" page
+    Then I should see error messages
+    And "Big news" page should have no comments

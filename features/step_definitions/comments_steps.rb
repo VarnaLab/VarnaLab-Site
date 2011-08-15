@@ -36,6 +36,14 @@ When 'I leave "$text" comment on "$name" page' do |comment_body, page_name|
   click_button 'Comment'
 end
 
+When 'I try to leave blank comment on "$name" page' do |page_name|
+  page = Page.find_by_name!(page_name)
+
+  visit page_path(page)
+
+  click_button 'Comment'
+end
+
 Then 'the comment should be hidden' do
   @comment.reload
   @comment.should be_hidden
@@ -65,6 +73,11 @@ end
 Then '"$name" page should have one comment' do |page_name|
   page = Page.find_by_name!(page_name)
   page.reload.should have(1).comment
+end
+
+Then '"$name" page should have no comments' do |page_name|
+  page = Page.find_by_name!(page_name)
+  page.reload.should have(0).comments
 end
 
 Then 'I should see "$text" comment' do |comment_body|

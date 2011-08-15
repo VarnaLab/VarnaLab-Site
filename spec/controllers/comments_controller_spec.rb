@@ -8,7 +8,7 @@ describe CommentsController do
     before do
       controller.stub :find_page => page
       page.comments.stub :build => comment
-      comment.stub :save!
+      comment.stub :save => true
     end
 
     it "assigns the parent page as @page" do
@@ -28,7 +28,7 @@ describe CommentsController do
     end
 
     it "creates a comment" do
-      comment.should_receive(:save!)
+      comment.should_receive(:save)
 
       post :create, :page_id => '1'
     end
@@ -38,7 +38,15 @@ describe CommentsController do
 
       anchor = controller.dom_id(comment)
 
-      controller.should redirect_to(page_path(page, :anchor => anchor))
+      response.should redirect_to(page_path(page, :anchor => anchor))
+    end
+
+    it "renders the page if comment can't be created" do
+      comment.stub :save => false
+
+      post :create, :page_id => '1'
+
+      response.should render_template('pages/show')
     end
   end
 end

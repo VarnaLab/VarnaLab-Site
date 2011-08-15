@@ -12,7 +12,8 @@ h1 = title @page.name
     strong = comment.commenter_name
     = simple_format comment.body
 
-= simple_form_for [@page, Comment.new] do |form|
+= simple_form_for [@page, @comment || Comment.new] do |form|
+  = form.error_notification
   = form.input :commenter_name, :label => 'Name'
   = form.input :commenter_email, :label => 'E-mail'
   = form.input :body, :label => 'Comment', :as => :text
