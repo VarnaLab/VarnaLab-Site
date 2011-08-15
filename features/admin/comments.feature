@@ -4,7 +4,7 @@ Feature: Comments Pages
   I want to be able read, manage and reply to comments
 
   Scenario: Hiding comments
-    Given a visitor have posted a comment "I like this"
+    Given a visitor have posted a comment "This is B******t"
     When I go to the admin comments page
     And I hide the comment
     Then the comment should be hidden

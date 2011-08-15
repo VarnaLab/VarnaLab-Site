@@ -48,6 +48,9 @@ end
 Then 'the comment should be hidden' do
   @comment.reload
   @comment.should be_hidden
+
+  visit page_path(@comment.commentable)
+  page.should_not have_content(@comment.body)
 end
 
 Then '"$text" comment should be hidden' do |comment_body|
@@ -58,6 +61,9 @@ end
 Then 'the comment should be visible' do
   @comment.reload
   @comment.should_not be_hidden
+
+  visit page_path(@comment.commentable)
+  page.should have_content(@comment.body)
 end
 
 Then '"$text" comment should be visible' do |comment_body|
