@@ -15,4 +15,10 @@ class Comment < ActiveRecord::Base
     self.reviewed = true
     save!
   end
+
+  module Commentable
+    def self.included(base)
+      base.has_many :comments, :as => :commentable
+    end
+  end
 end

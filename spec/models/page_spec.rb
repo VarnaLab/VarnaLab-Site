@@ -7,7 +7,12 @@ describe Page do
 
   it { should belong_to(:parent) }
   it { should have_many(:children) }
-  it { should have_many(:comments) }
+
+  it_behaves_like 'a commentable' do
+    def create_commentable
+      Factory(:page)
+    end
+  end
 
   it "can give its visible chidren" do
     parent = Factory(:page)
