@@ -23,6 +23,14 @@ module Admin
         CommentsPresenter.new(:review => 'visible').comments.should == [visible_comment]
         CommentsPresenter.new(:review => 'hidden').comments.should == [hidden_comment]
       end
+
+      it "can show only comments for given commentable" do
+        comment_1 = Factory(:comment)
+        comment_2 = Factory(:comment)
+
+        CommentsPresenter.new(:commentable => comment_1.commentable).comments.should == [comment_1]
+        CommentsPresenter.new(:commentable => comment_2.commentable).comments.should == [comment_2]
+      end
     end
   end
 end
