@@ -1,5 +1,5 @@
 header
-  h1 = title "#{@presenter.review.titleize} Comments"
+  h1 = title @presenter.title
   nav
     = link_to 'Unreviewed', admin_comments_path
     = link_to 'Visible', visible_admin_comments_path

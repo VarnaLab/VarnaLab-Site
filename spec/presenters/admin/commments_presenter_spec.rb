@@ -2,10 +2,18 @@ require 'spec_helper'
 
 module Admin
   describe CommentsPresenter do
-    it "can give the selected review" do
-      CommentsPresenter.new.review.should == 'unreviewed'
-      CommentsPresenter.new(:review => 'visible').review.should == 'visible'
-      CommentsPresenter.new(:review => 'hidden').review.should == 'hidden'
+    describe "title" do
+      it "is the review when no commentable is given" do
+        CommentsPresenter.new.title.should == 'Unreviewed comments'
+        CommentsPresenter.new(:review => 'visible').title.should == 'Visible comments'
+      end
+
+      it "is the commentable name + review when commentable is given" do
+        commentable = double(:name => 'Commentable')
+
+        CommentsPresenter.new(:commentable => commentable).title.should == 'Unreviewed comments for Commentable'
+        CommentsPresenter.new(:commentable => commentable, :review => 'visible').title.should == 'Visible comments for Commentable'
+      end
     end
 
     describe "finding comments" do

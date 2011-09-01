@@ -1,10 +1,17 @@
 class Admin::CommentsPresenter
-  attr_reader :comments, :review
+  attr_reader :comments
 
-  def initialize(params = {})
-    @review = params[:review] || 'unreviewed'
-    @scope = params[:commentable].presence.try(:comments) || Comment
-    @comments = comments_scope.order('created_at DESC').page(params[:page])
+  def initialize(options = {})
+    @review = options[:review] || 'unreviewed'
+    @commentable = options[:commentable]
+    @scope = @commentable.presence.try(:comments) || Comment
+    @comments = comments_scope.order('created_at DESC').page(options[:page])
+  end
+
+  def title
+    title = "#{@review.titleize} comments"
+    title << " for #{@commentable.name}" if @commentable.present?
+    title
   end
 
   private
@@ -14,7 +21,7 @@ class Admin::CommentsPresenter
       when 'visible'    then @scope.visible
       when 'hidden'     then @scope.hidden
       when 'unreviewed' then @scope.unreviewed
-      else raise "Invalid review state - #{params[:review]}"
+      else raise "Invalid review state - #{options[:review]}"
     end
   end
 end
