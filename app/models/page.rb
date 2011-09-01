@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
   include Comment::Commentable
 
-  validates_presence_of :name, :content
+  validates_presence_of :name
   validates_uniqueness_of :name
 
   acts_as_nested_set
