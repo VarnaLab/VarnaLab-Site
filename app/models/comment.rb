@@ -28,5 +28,9 @@ class Comment < ActiveRecord::Base
     def visible_comments
       comments.visible
     end
+
+    def visible_comments_count
+      visible_comments.count
+    end
   end
 end

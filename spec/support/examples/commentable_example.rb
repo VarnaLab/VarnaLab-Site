@@ -19,12 +19,17 @@ shared_examples_for 'a commentable' do
     comment.should be_new_record
   end
 
-  describe "visible comments" do
-    it "selects only visible comments" do
-      visible_comment = create_comment :hidden => false
-      hidden_comment = create_comment :hidden => true
+  it "can count its visible comments" do
+    visible_comment = create_comment :hidden => false
+    hidden_comment = create_comment :hidden => true
 
-      commentable.visible_comments.should == [visible_comment]
-    end
+    commentable.visible_comments_count.should == 1
+  end
+
+  it "can select its visible comments" do
+    visible_comment = create_comment :hidden => false
+    hidden_comment = create_comment :hidden => true
+
+    commentable.visible_comments.should == [visible_comment]
   end
 end
