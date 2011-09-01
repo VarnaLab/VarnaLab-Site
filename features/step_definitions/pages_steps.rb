@@ -1,5 +1,5 @@
 Given 'a page "$name" exists' do |name|
-  Factory(:page, :name => name)
+  @page = Factory(:page, :name => name)
 end
 
 Given 'a page "$name" with "$content" content exists' do |name, content|

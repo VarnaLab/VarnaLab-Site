@@ -25,3 +25,13 @@ Feature: Comments Pages
     Then "I like this" comment should be visible
     And "This is B******t" comment should be hidden
     And there should be no unreviewed comments
+
+  Scenario: Browsing page comments
+    Given a page "Big news" exists
+    And a visitor comments on it with "This is great news"
+    And I am on the admin pages page
+    When I follow "Big news"
+    And I follow "Visible comments - 1"
+    Then I should see "This is great news"
+
+

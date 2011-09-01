@@ -6,6 +6,10 @@ Given 'the comment was hidden' do
   @comment.review_with! false
 end
 
+Given 'a visitor comments on it with "$text"' do |comment_body|
+  Factory(:visitor_comment, :commentable => @page, :body => comment_body)
+end
+
 When 'I hide the comment' do
   click_link "Hide comment ##{@comment.id}"
 end

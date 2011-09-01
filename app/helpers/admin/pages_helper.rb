@@ -8,6 +8,11 @@ module Admin::PagesHelper
     link_to name.truncate(20), link, :title => %Q(Go back to "#{name}")
   end
 
+  def link_to_comments_of(page)
+    count = page.visible_comments_count
+    link_to "Comments (#{count})", admin_page_comments_path(page, 'visible'), :title => "Visible comments - #{count}"
+  end
+
   def page_status_box(page)
     class_names  = ['status-box']
     class_names << 'invisible' unless page.visible?

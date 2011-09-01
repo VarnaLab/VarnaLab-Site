@@ -2,6 +2,7 @@ header
   = link_to_parent_page @page
   h1 = title @page.name
   nav
+    = link_to_comments_of @page
     = link_to_adding_a_subpage @page
     = link_to_edit @page
     = link_to_delete @page, :remote => false
