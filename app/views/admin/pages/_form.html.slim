@@ -4,6 +4,7 @@
     = form.input :name
     = form.parent_input
     = form.input :content
-    = form.input :visible
+    = form.input :visible, :label => 'Visible?'
+    = form.input :commentable, :label => 'Can have comments?'
   .buttons
     = form.button :submit

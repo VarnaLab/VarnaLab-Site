@@ -60,6 +60,10 @@ When 'I mark the "$name" page as invisible' do |name|
   click_button 'Page'
 end
 
+When 'I submit the page' do
+  click_button 'Page'
+end
+
 Then 'the "$name" page should be invisible' do |name|
   Page.find_by_name!(name).should_not be_visible
 end
@@ -101,4 +105,8 @@ end
 
 Then 'I should not find this page' do
   page.driver.status_code.should == 404
+end
+
+Then '"$page_title" page should not be commentable' do |name|
+  Page.find_by_name!(name).should_not be_commentable
 end
