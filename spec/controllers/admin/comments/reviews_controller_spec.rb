@@ -6,6 +6,8 @@ describe Admin::Comments::ReviewsController do
   before do
     Comment.stub :find => comment
     comment.stub :review_with!
+
+    request.env['HTTP_REFERER'] = admin_comments_path
   end
 
   describe "POST 'create'" do
@@ -24,7 +26,7 @@ describe Admin::Comments::ReviewsController do
     it "redirects to comments list" do
       put :create, :comment_id => '1'
 
-      response.should redirect_to(admin_comments_path)
+      response.should redirect_to(admin_comments_url)
     end
   end
 
@@ -44,7 +46,7 @@ describe Admin::Comments::ReviewsController do
     it "redirects to comments list" do
       delete :destroy, :comment_id => '1'
 
-      response.should redirect_to(admin_comments_path)
+      response.should redirect_to(admin_comments_url)
     end
   end
 end
