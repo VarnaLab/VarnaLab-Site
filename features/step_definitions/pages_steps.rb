@@ -14,7 +14,11 @@ Given '"$pages" page hierarchy exists' do |pages|
 end
 
 Given 'a hidden page "$name" exists' do |name|
-  Factory(:page, :name => name, :visible => false)
+  @page = Factory(:page, :name => name, :visible => false)
+end
+
+Given 'this page is uncommentable' do
+  @page.update_attributes! :commentable => false
 end
 
 When 'I start creating a page' do
@@ -109,4 +113,12 @@ end
 
 Then '"$page_title" page should not be commentable' do |name|
   Page.find_by_name!(name).should_not be_commentable
+end
+
+Then 'I should not be able to comment on this page' do
+  page.should_not have_css('#new-comment')
+
+  -> {
+    post page_comments_path(@page), :comment => {:foo => 'bar'}
+  }.should raise_error("You can't comment on uncommentable entry")
 end

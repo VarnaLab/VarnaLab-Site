@@ -13,12 +13,6 @@ shared_examples_for 'a commentable' do
 
   it { should have_many(:comments) }
 
-  it "can build comments" do
-    comment = commentable.build_comment(:commenter_name => 'tester')
-    comment.commenter_name.should == 'tester'
-    comment.should be_new_record
-  end
-
   it "can count its visible comments" do
     visible_comment = create_comment :hidden => false
     hidden_comment = create_comment :hidden => true
@@ -31,5 +25,20 @@ shared_examples_for 'a commentable' do
     hidden_comment = create_comment :hidden => true
 
     commentable.visible_comments.should == [visible_comment]
+  end
+
+  describe "building comment" do
+    it "creates a new comment from the commentable" do
+      comment = commentable.build_comment(:commenter_name => 'tester')
+      comment.commentable.should == commentable
+      comment.commenter_name.should == 'tester'
+      comment.should be_new_record
+    end
+
+    it "raises an exception if the commentable can't have comments" do
+      commentable.commentable = false
+
+      -> { commentable.build_comment }.should raise_error
+    end
   end
 end

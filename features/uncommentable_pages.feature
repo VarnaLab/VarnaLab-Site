@@ -10,6 +10,11 @@ Feature: Uncommentable pages
     And I submit the page
     Then "About us" page should not be commentable
 
+  Scenario: Trying to comment on uncommentable page
+    Given a page "About us" exists
+    And this page is uncommentable
+    When I go to the "About us" page
+    Then I should not be able to comment on this page
 
 
 

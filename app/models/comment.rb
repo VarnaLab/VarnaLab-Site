@@ -22,6 +22,7 @@ class Comment < ActiveRecord::Base
     end
 
     def build_comment(attributes = {})
+      raise "You can't comment on uncommentable entry" unless commentable?
       comments.build(attributes)
     end
 

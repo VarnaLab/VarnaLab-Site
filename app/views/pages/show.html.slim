@@ -8,4 +8,4 @@ h1 = title @page.name
 = simple_format @page.content
 
 = render @page.visible_comments
-= render 'comments/form'
+= render 'comments/form' if @page.commentable?
