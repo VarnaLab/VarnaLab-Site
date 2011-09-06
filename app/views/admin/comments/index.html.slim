@@ -5,17 +5,23 @@ header
     = link_to 'Visible', visible_admin_comments_path
     = link_to 'Hidden', hidden_admin_comments_path
 
-ul
+#comments-list
   - @presenter.comments.each do |comment|
-    li
-      | ##{comment.id} - <strong>#{comment.commenter_name}</strong> <em>#{comment.commenter_email}</em>
-      = simple_format comment.body
-      - if comment.hidden?
-        = link_to 'Show', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Show comment ##{comment.id}"
-      - elsif comment.reviewed?
-        = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
-      - else
-        = link_to 'Approve', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Approve comment ##{comment.id}"
-        = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
+    section
+      header
+        | ##{comment.id} - #{link_to comment.commentable.name, [:admin, comment.commentable]}
+        time = time_ago_in_words(comment.created_at) + ' ago'
+        .actions
+          - if comment.hidden?
+            = link_to 'Show', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Show comment ##{comment.id}"
+          - elsif comment.reviewed?
+            = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
+          - else
+            = link_to 'Approve', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Approve comment ##{comment.id}"
+            = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
+      .body = simple_format comment.body
+      footer
+        strong = comment.commenter_name
+        em = comment.commenter_email
 
 = paginate @presenter.comments
