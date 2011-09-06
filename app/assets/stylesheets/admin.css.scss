@@ -151,7 +151,8 @@ article {
   section:hover .actions { display: block; }
   section:hover time { display: none; }
 
-  .body { @include border-radius(0 0 $radius $radius); border: 1px solid black; border-top: none; padding: 20px; margin-bottom: 6px; }
+  .body { @include border-radius(0 0 $radius $radius); border: 1px solid black; border-top: none; padding: 20px; margin-bottom: 6px; position: relative; min-height: 30px; }
+  .body .hidden-marker { top: 0px; right: 0px; }
 
   footer { padding: 0 10px; position: relative; display: inline-block; }
   footer:after { content: ""; height: 0px; position: absolute; top: -6px; right: -$arrow-size; border-left: $arrow-size solid black; border-bottom: $arrow-size solid white; }

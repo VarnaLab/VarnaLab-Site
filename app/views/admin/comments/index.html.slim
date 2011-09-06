@@ -20,7 +20,10 @@ header
           - else
             = link_to 'Approve', admin_comment_review_path(comment), :method => :post, :confirm => 'Are you sure?', :title => "Approve comment ##{comment.id}"
             = link_to 'Hide', admin_comment_review_path(comment), :method => :delete, :confirm => 'Are you sure?', :title => "Hide comment ##{comment.id}"
-      .body = simple_format comment.body
+      .body
+        - if comment.hidden?
+          .hidden-marker
+        = simple_format comment.body
       footer
         strong = comment.commenter_name
         em = comment.commenter_email
