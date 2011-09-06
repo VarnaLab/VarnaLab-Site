@@ -1,7 +1,8 @@
 header
+  = link_to 'All', admin_comments_path if params[:review].present?
   h1 = title @presenter.title
   nav
-    = link_to 'Unreviewed', admin_comments_path
+    = link_to 'Unreviewed', unreviewed_admin_comments_path
     = link_to 'Visible', visible_admin_comments_path
     = link_to 'Hidden', hidden_admin_comments_path
 

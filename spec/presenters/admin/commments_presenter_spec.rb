@@ -4,24 +4,34 @@ module Admin
   describe CommentsPresenter do
     describe "title" do
       it "is the review when no commentable is given" do
-        CommentsPresenter.new.title.should == 'Unreviewed comments'
+        CommentsPresenter.new.title.should == 'All comments'
         CommentsPresenter.new(:review => 'visible').title.should == 'Visible comments'
       end
 
       it "is the commentable name + review when commentable is given" do
         commentable = double(:name => 'Commentable')
 
-        CommentsPresenter.new(:commentable => commentable).title.should == 'Unreviewed comments for Commentable'
+        CommentsPresenter.new(:commentable => commentable).title.should == 'All comments for Commentable'
+        CommentsPresenter.new(:commentable => commentable, :review => 'unreviewed').title.should == 'Unreviewed comments for Commentable'
         CommentsPresenter.new(:commentable => commentable, :review => 'visible').title.should == 'Visible comments for Commentable'
       end
     end
 
     describe "finding comments" do
-      it "shows unreviewed comments by default" do
+      it "shows all comments by default" do
         reviewed_comment = Factory(:comment, :reviewed => true)
         unreviewed_comment = Factory(:comment, :reviewed => false)
 
-        CommentsPresenter.new.comments.should == [unreviewed_comment]
+        comments = CommentsPresenter.new.comments
+        comments.should include(reviewed_comment)
+        comments.should include(unreviewed_comment)
+      end
+
+      it "can select unreviewed comments" do
+        reviewed_comment = Factory(:comment, :reviewed => true)
+        unreviewed_comment = Factory(:comment, :reviewed => false)
+
+        CommentsPresenter.new(:review => 'unreviewed').comments.should == [unreviewed_comment]
       end
 
       it "can select visible or hidden comments" do

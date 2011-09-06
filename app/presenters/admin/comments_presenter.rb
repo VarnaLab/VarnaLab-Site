@@ -2,7 +2,7 @@ class Admin::CommentsPresenter
   attr_reader :comments
 
   def initialize(options = {})
-    @review = options[:review] || 'unreviewed'
+    @review = options[:review] || 'all'
     @commentable = options[:commentable]
     @scope = @commentable.presence.try(:comments) || Comment
     @comments = comments_scope.order('created_at DESC').page(options[:page])
@@ -21,6 +21,7 @@ class Admin::CommentsPresenter
       when 'visible'    then @scope.visible
       when 'hidden'     then @scope.hidden
       when 'unreviewed' then @scope.unreviewed
+      when 'all'        then @scope
       else raise "Invalid review state - #{options[:review]}"
     end
   end
