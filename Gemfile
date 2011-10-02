@@ -1,17 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '3.1.1.rc2'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-gem 'sass-rails', '~> 3.1.0.rc'
+gem 'sass-rails', "  ~> 3.1.0"
+gem 'coffee-rails', "~> 3.1.0"
+gem 'uglifier', '>= 1.0.3'
+
+
 gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'slim'
-gem 'coffee-script'
-gem 'uglifier'
+#gem 'coffee-script'
 
 gem 'appconfig'
 
@@ -28,7 +31,6 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 group :development, :test do
   gem 'active_reload'
   gem 'jasmine'
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'factory_girl_rails', '~> 1.1.rc1'
@@ -42,4 +44,5 @@ group :test do
   gem 'database_cleaner'
   gem 'timecop'
   gem 'webrat'
+  gem 'turn', :require => false
 end
