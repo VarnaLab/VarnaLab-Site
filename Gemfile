@@ -2,19 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 
-gem 'sass-rails', "~> 3.1.2"
-gem 'coffee-rails', "~> 3.1.1"
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'uglifier'
-
 
 gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'slim'
-#gem 'coffee-script'
 
 gem 'appconfig'
 
@@ -25,7 +20,7 @@ gem 'inherited_resources'
 gem 'kaminari'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
-gem 'spork'
+gem 'spork', '~> 0.9.0.rc9'
 gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
@@ -33,11 +28,12 @@ group :development, :test do
   gem 'jasmine'
   gem 'rspec-rails'
   gem 'cucumber-rails'
-  gem 'factory_girl_rails', '~> 1.1.rc1'
+  gem 'factory_girl_rails'
   gem 'faker'
 end
 
 group :test do
+  gem 'minitest'
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'capybara'
