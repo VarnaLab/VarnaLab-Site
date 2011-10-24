@@ -30,4 +30,44 @@ describe Page do
       Page.visible.should == [visible_page]
     end
   end
+
+  describe "reordering" do
+    let(:root) { Factory(:page) }
+
+    before do
+      page_1 = Factory(:page, :parent => root)
+      page_2 = Factory(:page, :parent => root)
+      page_3 = Factory(:page, :parent => root)
+
+      @expected_order = [page_3, page_1, page_2]
+    end
+
+    def reorder_pages
+      Page.reorder(@expected_order.map(&:id))
+    end
+
+    it "sorts the given pages" do
+      reorder_pages
+
+      root.children.ordered.should == @expected_order
+    end
+
+    it "keeps the nested set behavior" do
+      other_root = Factory(:page)
+
+      reorder_pages
+
+      Page.ordered.should == [root] + @expected_order + [other_root]
+    end
+
+    it "keeps the pairs of lft and rgt" do
+      -> {
+        reorder_pages
+      }.should_not change { Page.ordered.map { |page| [page.lft, page.rgt] } }
+    end
+
+    it "accepts nil as argument" do
+      -> { Page.reorder(nil) }.should_not raise_error
+    end
+  end
 end
