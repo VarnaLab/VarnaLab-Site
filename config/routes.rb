@@ -1,5 +1,6 @@
 VarnaLab::Application.routes.draw do
   namespace :admin do
+    root :to => 'pages#index'
     resources :pages
 
     match '/page/:page_id/comments/(:review)', :to => 'comments#index', :as => 'page_comments'
