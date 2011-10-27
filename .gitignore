@@ -13,3 +13,5 @@ public/stylesheets
 .sass-cache/
 coverage/*
 capybara-*
+
+Gemfile.lock
