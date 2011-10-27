@@ -8,7 +8,8 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
-gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
+gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'stable'
+gem "therubyracer-heroku", "0.8.1.pre3", require: false 
 gem 'slim'
 
 gem 'appconfig'
@@ -21,7 +22,6 @@ gem 'kaminari'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 gem 'spork', '~> 0.9.0.rc9'
-gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
   gem 'active_reload'
@@ -41,4 +41,10 @@ group :test do
   gem 'timecop'
   gem 'webrat'
   gem 'turn', :require => false
+end
+
+if RUBY_VERSION < "1.9"
+  gem "ruby-debug"
+else
+  gem "ruby-debug19"
 end
