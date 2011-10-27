@@ -9,7 +9,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 
 gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'stable'
-gem "therubyracer-heroku", "0.8.1.pre3", require: false 
+gem 'therubyracer'
 gem 'slim'
 
 gem 'appconfig'
@@ -43,8 +43,8 @@ group :test do
   gem 'turn', :require => false
 end
 
-if RUBY_VERSION < "1.9"
-  gem "ruby-debug"
+if RUBY_VERSION < '1.9'
+  gem 'ruby-debug'
 else
-  gem "ruby-debug19"
+  gem 'ruby-debug19'
 end
