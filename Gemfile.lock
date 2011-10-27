@@ -6,11 +6,19 @@ GIT
       activerecord (>= 3.0.0)
 
 GIT
+<<<<<<< HEAD
   remote: https://github.com/chriseppstein/compass.git
   revision: 91a748a916360057b5caf6ea85cd38441d3b257a
   branch: rails31
   specs:
     compass (0.12.0.alpha.0.91a748a)
+=======
+  remote: https://github.com/armstrjare/compass.git
+  revision: ee9ed3f3335f75950bb620aed1e49ce4adf51ce6
+  branch: fix_sprockets_static_asset_error
+  specs:
+    compass (0.12.alpha.0.ee9ed3f)
+>>>>>>> e5a1fbd... Gemfile and travis edit
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)

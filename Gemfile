@@ -8,7 +8,9 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
-gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'stable'
+#gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'stable'
+gem 'compass', :git => 'https://github.com/armstrjare/compass.git', :branch => 'fix_sprockets_static_asset_error'
+
 gem 'therubyracer'
 gem 'slim'
 
