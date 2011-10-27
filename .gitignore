@@ -1,4 +1,6 @@
 .project
+.rvmrc
+cookbooks
 .DS_Store
 .bundle
 db/*.sqlite3
