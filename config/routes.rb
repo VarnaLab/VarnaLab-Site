@@ -5,11 +5,11 @@ VarnaLab::Application.routes.draw do
 
     match '/page/:page_id/comments/(:review)', :to => 'comments#index', :as => 'page_comments'
 
-    resources :comments, :only => [] do
+    resources :comments, :only => [:destroy] do
       post :review, :to => 'comments/reviews#create'
       delete :review, :to => 'comments/reviews#destroy'
 
-      match '/(:review)', :to => 'comments#index', :as => '', :on => :collection
+     match '/(:review)', :to => 'comments#index', :as => '', :on => :collection, :constraints => { :review => /[a-z]+ / }
     end
   end
 

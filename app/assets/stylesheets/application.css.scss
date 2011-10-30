@@ -2,3 +2,21 @@ nav {
   a + a { border-left: 1px solid black; margin-left: 10px; padding-left: 10px; }
 }
 
+#comment_body {
+	height:80px;
+}
+
+#new-comment{
+	width:200px;
+	float:rigth;
+}
+
+div.comment {
+	background-image: -webkit-linear-gradient(top, #dddddd, #a1a1a1);
+	width:300px;
+	border-width:1px;
+	border-color:grey;
+	border-style:solid;
+
+}
+
