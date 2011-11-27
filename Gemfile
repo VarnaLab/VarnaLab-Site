@@ -8,10 +8,14 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
+<<<<<<< HEAD
 #gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'stable'
 gem 'compass', :git => 'https://github.com/armstrjare/compass.git', :branch => 'fix_sprockets_static_asset_error'
 
 gem 'therubyracer'
+=======
+gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
+>>>>>>> 2f1acf02251736513426f38d3700500114598f91
 gem 'slim'
 
 gem 'appconfig'
@@ -24,6 +28,10 @@ gem 'kaminari'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 gem 'spork', '~> 0.9.0.rc9'
+<<<<<<< HEAD
+=======
+gem 'ruby-debug19', :require => 'ruby-debug'
+>>>>>>> 2f1acf02251736513426f38d3700500114598f91
 
 group :development, :test do
   gem 'active_reload'
