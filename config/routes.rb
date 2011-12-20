@@ -1,4 +1,6 @@
 VarnaLab::Application.routes.draw do
+  devise_for :users
+
   namespace :admin do
     root :to => 'pages#index'
     resources :pages

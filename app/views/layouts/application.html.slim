@@ -10,5 +10,10 @@ html
       = link_to 'Home', root_path
       - Page.visible.roots.each do |page|
         = link_to page.name, page
-
-    = yield
+      - if user_signed_in?
+        = current_user.email
+        = link_to 'Logout', destroy_user_session_path, :method => :delete
+      - if flash[:notice] or flash[:alert]
+        p class="alert"  = alert
+        p class="notice" = notice
+      = yield

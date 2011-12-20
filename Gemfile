@@ -24,6 +24,7 @@ gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_neste
 
 gem 'spork', '~> 0.9.0.rc9'
 gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'devise'
 
 
 group :development, :test do

@@ -16,4 +16,6 @@ FactoryGirl.define do
   factory :visitor_comment, :parent => :comment do
     # TODO
   end
+  
+
 end
