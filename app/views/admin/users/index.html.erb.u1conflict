@@ -1,6 +1,0 @@
-   <h1> Users </h1>
-  <%=link_to 'Create a new user', new_admin_user_path %>
-
- <% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
