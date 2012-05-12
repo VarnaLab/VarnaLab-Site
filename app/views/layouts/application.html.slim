@@ -10,7 +10,7 @@ html
       = link_to 'Home', root_path
       - Page.visible.roots.each do |page|
         = link_to page.name, page
-      - if user_signed_in?
+      - if signed_in?(:user) 
         = link_to 'Logout', destroy_user_session_path, :method => :delete
       - if flash[:notice] or flash[:alert]
         p class="alert"  = alert

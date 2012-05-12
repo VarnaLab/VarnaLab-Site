@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.0'
 
 gem 'sqlite3'
 
-gem 'sass-rails'
-gem 'coffee-rails'
+gem 'sass-rails', '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier'
 
 gem 'compass', :git => 'https://github.com/armstrjare/compass.git', :branch => 'fix_sprockets_static_asset_error'
@@ -28,7 +28,7 @@ gem 'devise'
 
 
 group :development, :test do
-  gem 'active_reload'
+  #gem 'active_reload'
   gem 'jasmine'
   gem 'rspec-rails'
   gem 'cucumber-rails'
