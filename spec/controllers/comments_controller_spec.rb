@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe CommentsController do
-  let(:page) { Factory.stub(:page) }
-  let(:comment) { Factory.stub(:comment) }
+  let(:page) { Factory.build_stubbed(:page) }
+  let(:comment) { Factory.build_stubbed(:comment) }
 
   describe "POST 'create'" do
     before do

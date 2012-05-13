@@ -9,22 +9,22 @@ describe Comment do
   it { should_not allow_mass_assignment_of(:hidden) }
 
   it "can list hidden or visible comments" do
-    visible_comment = Factory(:comment, :hidden => false)
-    hidden_comment = Factory(:comment, :hidden => true)
+    visible_comment = FactoryGirl.create(:comment, :hidden => false)
+    hidden_comment = FactoryGirl.create(:comment, :hidden => true)
 
     Comment.hidden.should == [hidden_comment]
     Comment.visible.should == [visible_comment]
   end
 
   it "can give all unreviewed comments" do
-    reviewed_comment = Factory(:comment, :reviewed => true)
-    unreviewed_comment = Factory(:comment, :reviewed => false)
+    reviewed_comment = FactoryGirl.create(:comment, :reviewed => true)
+    unreviewed_comment = FactoryGirl.create(:comment, :reviewed => false)
 
     Comment.unreviewed.should == [unreviewed_comment]
   end
 
   describe "(reviewing)" do
-    let(:comment) { Factory(:comment) }
+    let(:comment) { Factory.create(:comment) }
 
     subject { comment }
 

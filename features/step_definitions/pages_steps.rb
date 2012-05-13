@@ -1,20 +1,20 @@
 Given 'a page "$name" exists' do |name|
-  @page = Factory(:page, :name => name)
+  @page = FactoryGirl.create(:page, :name => name)
 end
 
 Given 'a page "$name" with "$content" content exists' do |name, content|
-  Factory(:page, :name => name, :content => content)
+  FactoryGirl.create(:page, :name => name, :content => content)
 end
 
 Given '"$pages" page hierarchy exists' do |pages|
   parent_page = nil
   pages.split(' > ').each do |name|
-    parent_page = Factory(:page, :name => name, :parent => parent_page)
+    parent_page = FactoryGirl.create(:page, :name => name, :parent => parent_page)
   end
 end
 
 Given 'a hidden page "$name" exists' do |name|
-  @page = Factory(:page, :name => name, :visible => false)
+  @page = FactoryGirl.create(:page, :name => name, :visible => false)
 end
 
 Given 'this page is uncommentable' do

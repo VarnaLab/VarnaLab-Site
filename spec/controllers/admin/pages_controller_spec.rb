@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::PagesController do
-  let(:page) { Factory.stub(:page) }
+  let(:page) { Factory.build_stubbed(:page) }
 
   before { set_as_a_resource page }
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PagesController do
-  let(:page) { Factory.stub(:page) }
+  let(:page) { Factory.build_stubbed(:page) }
 
   describe "GET 'index'" do
     it "should be successful" do
