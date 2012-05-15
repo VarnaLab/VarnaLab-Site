@@ -24,7 +24,7 @@ describe Comment do
   end
 
   describe "(reviewing)" do
-    let(:comment) { Factory.create(:comment) }
+    let(:comment) { FactoryGirl.create(:comment) }
 
     subject { comment }
 

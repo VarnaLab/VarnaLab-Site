@@ -8,7 +8,7 @@ shared_examples_for 'a commentable' do
 
   def create_comment(attributes = {})
     attributes[:commentable] = commentable
-    Factory(:comment, attributes)
+    FactoryGirl.create(:comment, attributes)
   end
 
   it { should have_many(:comments) }
