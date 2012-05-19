@@ -28,18 +28,17 @@ gem 'devise'
 
 
 group :development, :test do
-  #gem 'active_reload'
   gem 'jasmine'
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 group :test do
   gem 'minitest'
   gem 'launchy'
-  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'timecop'
