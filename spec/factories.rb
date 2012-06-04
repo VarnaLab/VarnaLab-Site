@@ -19,8 +19,10 @@ FactoryGirl.define do
 
   # Read about factories at http://github.com/thoughtbot/factory_girl
   factory :user do
-    #TODO
-    name
+    email { Faker::Internet.email }
+    name 'name'
+    password 'secret'
+    password_confirmation 'secret'
   end
 
 end

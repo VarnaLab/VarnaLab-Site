@@ -23,11 +23,13 @@ end
 
 When 'I start creating a page' do
   visit admin_pages_path
+  sign_in
   click_link 'Create a new page'
 end
 
 When 'I start editing the "$name" page' do |name|
   visit admin_pages_path
+  sign_in
   click_link "Edit '#{name}' page"
 end
 
@@ -42,6 +44,7 @@ end
 
 When 'I delete the "$name" page' do |name|
   visit admin_pages_path
+  sign_in
   click_link "Delete '#{name}' page"
 
   page.should have_content('Page was successfully destroyed.')
@@ -53,11 +56,13 @@ end
 
 When 'I start creating a subpage of "$name"' do |name|
   visit admin_pages_path
+  sign_in
   click_link "Add a subpage of '#{name}'"
 end
 
 When 'I mark the "$name" page as invisible' do |name|
   visit edit_admin_page_path(Page.find_by_name!(name))
+  sign_in
 
   uncheck 'Visible'
 

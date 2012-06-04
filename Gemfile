@@ -34,6 +34,10 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'shoulda-matchers'
+  gem 'guard'
+  gem 'guard-rspec', '~> 0.6.0'
+  gem 'guard-bundler'
+  gem 'guard-cucumber'
 end
 
 group :test do
