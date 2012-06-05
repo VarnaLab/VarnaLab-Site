@@ -1,5 +1,5 @@
 Given /^a(?:nother)? visitor have posted a comment "([^"]+)"$/ do |comment_body|
-  @comment = Factory(:visitor_comment, :body => comment_body)
+  @comment = FactoryGirl.create(:visitor_comment, :body => comment_body)
 end
 
 Given 'the comment was hidden' do
@@ -7,7 +7,7 @@ Given 'the comment was hidden' do
 end
 
 Given 'a visitor comments on it with "$text"' do |comment_body|
-  Factory(:visitor_comment, :commentable => @page, :body => comment_body)
+  FactoryGirl.create(:visitor_comment, :commentable => @page, :body => comment_body)
 end
 
 When 'I hide the comment' do
@@ -39,14 +39,14 @@ When 'I submit the comment' do
 end
 
 When 'I leave "$text" comment on "$name" page' do |comment_body, page_name|
-  When %Q(I go to the "#{page_name}" page)
-  And %Q(I fill in "#{comment_body}" comment)
-  And %Q(I submit the comment)
+  step %Q(I go to the "#{page_name}" page)
+  step %Q(I fill in "#{comment_body}" comment)
+  step %Q(I submit the comment)
 end
 
 When 'I try to leave blank comment on "$name" page' do |page_name|
-  When %Q(I go to the "#{page_name}" page)
-  And %Q(I submit the comment)
+  step %Q(I go to the "#{page_name}" page)
+  step %Q(I submit the comment)
 end
 
 Then 'the comment should be hidden' do

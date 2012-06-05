@@ -1,8 +1,17 @@
+.project
+.rvmrc
+.travis.yml~
+
+cookbooks
 .DS_Store
 .bundle
 db/*.sqlite3
 log/*.log
 tmp/
+public/assets
+public/stylesheets
 .sass-cache/
 coverage/*
 capybara-*
+
+Gemfile.lock

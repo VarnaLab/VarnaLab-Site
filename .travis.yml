@@ -1,5 +1,7 @@
 rvm: 1.9.2
-script: "bundle exec rake db:drop db:create db:migrate test"
+before_script:
+  - "bundle exec rake db:drop db:create db:migrate"
+script: "bundle exec rake"
 notifications:
   email: false
   irc: "irc.freenode.org#varnalab"

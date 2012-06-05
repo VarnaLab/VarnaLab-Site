@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::Comments::ReviewsController do
-  let(:comment) { Factory.stub(:comment) }
+  let(:comment) { FactoryGirl.build_stubbed(:comment) }
 
   before do
     Comment.stub :find => comment
