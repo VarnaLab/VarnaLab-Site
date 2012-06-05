@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+# cookbook 'chef-client'
+  cookbook 'build-essential'
+  cookbook "apt"
+  cookbook "git"
+  cookbook "sqlite"
+
+  cookbook 'rvm',
+    :git => 'git@github.com:kalkov/kalkov_rvm_cookbook.git'
+   
+  cookbook 'rvm_passenger',
+    :git => 'git@github.com:kalkov/kalkov_rvm_passenger_cookbook.git'
+   
+  cookbook 'nginx',
+    :git => 'git@github.com:kalkov/kalkov_nginx_cookbook.git'
+

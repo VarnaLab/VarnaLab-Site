@@ -19,8 +19,8 @@ module Admin
 
     describe "finding comments" do
       it "shows all comments by default" do
-        reviewed_comment = Factory(:comment, :reviewed => true)
-        unreviewed_comment = Factory(:comment, :reviewed => false)
+        reviewed_comment = FactoryGirl.create(:comment, :reviewed => true)
+        unreviewed_comment = FactoryGirl.create(:comment, :reviewed => false)
 
         comments = CommentsPresenter.new.comments
         comments.should include(reviewed_comment)
@@ -28,23 +28,23 @@ module Admin
       end
 
       it "can select unreviewed comments" do
-        reviewed_comment = Factory(:comment, :reviewed => true)
-        unreviewed_comment = Factory(:comment, :reviewed => false)
+        reviewed_comment = FactoryGirl.create(:comment, :reviewed => true)
+        unreviewed_comment = FactoryGirl.create(:comment, :reviewed => false)
 
         CommentsPresenter.new(:review => 'unreviewed').comments.should == [unreviewed_comment]
       end
 
       it "can select visible or hidden comments" do
-        visible_comment = Factory(:comment, :hidden => false)
-        hidden_comment = Factory(:comment, :hidden => true)
+        visible_comment = FactoryGirl.create(:comment, :hidden => false)
+        hidden_comment = FactoryGirl.create(:comment, :hidden => true)
 
         CommentsPresenter.new(:review => 'visible').comments.should == [visible_comment]
         CommentsPresenter.new(:review => 'hidden').comments.should == [hidden_comment]
       end
 
       it "can show only comments for given commentable" do
-        comment_1 = Factory(:comment)
-        comment_2 = Factory(:comment)
+        comment_1 = FactoryGirl.create(:comment)
+        comment_2 = FactoryGirl.create(:comment)
 
         CommentsPresenter.new(:commentable => comment_1.commentable).comments.should == [comment_1]
         CommentsPresenter.new(:commentable => comment_2.commentable).comments.should == [comment_2]

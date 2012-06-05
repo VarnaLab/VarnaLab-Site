@@ -2,42 +2,42 @@ require 'spec_helper'
 
 describe Page do
   it { should validate_presence_of(:name) }
-  it { Factory(:page).should validate_uniqueness_of(:name) }
+  it { FactoryGirl.create(:page).should validate_uniqueness_of(:name) }
 
   it { should belong_to(:parent) }
   it { should have_many(:children) }
 
   it_behaves_like 'a commentable' do
     def create_commentable
-      Factory(:page)
+      FactoryGirl.create(:page)
     end
   end
 
   it "can give its visible chidren" do
-    parent = Factory(:page)
+    parent = FactoryGirl.create(:page)
 
-    visible_child = Factory(:page, :parent => parent, :visible => true)
-    hidden_child = Factory(:page, :parent => parent, :visible => false)
+    visible_child = FactoryGirl.create(:page, :parent => parent, :visible => true)
+    hidden_child = FactoryGirl.create(:page, :parent => parent, :visible => false)
 
     parent.visible_children.should == [visible_child]
   end
 
   describe "scopes" do
     it "has visible pages" do
-      visible_page = Factory(:page, :visible => true)
-      hidden_page = Factory(:page, :visible => false)
+      visible_page = FactoryGirl.create(:page, :visible => true)
+      hidden_page = FactoryGirl.create(:page, :visible => false)
 
       Page.visible.should == [visible_page]
     end
   end
 
   describe "reordering" do
-    let(:root) { Factory(:page) }
+    let(:root) { FactoryGirl.create(:page) }
 
     before do
-      page_1 = Factory(:page, :parent => root)
-      page_2 = Factory(:page, :parent => root)
-      page_3 = Factory(:page, :parent => root)
+      page_1 = FactoryGirl.create(:page, :parent => root)
+      page_2 = FactoryGirl.create(:page, :parent => root)
+      page_3 = FactoryGirl.create(:page, :parent => root)
 
       @expected_order = [page_3, page_1, page_2]
     end
@@ -53,7 +53,7 @@ describe Page do
     end
 
     it "keeps the nested set behavior" do
-      other_root = Factory(:page)
+      other_root = FactoryGirl.create(:page)
 
       reorder_pages
 
