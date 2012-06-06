@@ -30,6 +30,7 @@ Feature: Comments Pages
     Given a page "Big news" exists
     And a visitor comments on it with "This is great news"
     And I am on the admin pages page
+    And I am logged in as "asd@asd.asd" with password "asdasd"
     When I follow "Big news"
     And I follow "Visible comments - 1"
     Then I should see "This is great news"

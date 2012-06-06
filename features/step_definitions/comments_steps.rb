@@ -10,6 +10,12 @@ Given 'a visitor comments on it with "$text"' do |comment_body|
   FactoryGirl.create(:visitor_comment, :commentable => @page, :body => comment_body)
 end
 
+Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
+  unless email.blank?
+    sign_in
+  end
+end
+
 When 'I hide the comment' do
   click_link "Hide comment ##{@comment.id}"
 end
