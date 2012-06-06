@@ -42,6 +42,7 @@ Feature: Managing Pages
   Scenario: Browsing sub-pages
     Given "Menu > About us > Contact" page hierarchy exists
     And I am on the admin pages page
+    And I am logged in as "arta.kostova@gmail.com" with password "blabla"
     When I follow "Menu"
     And I follow "About us"
     Then I should see "Contact"
@@ -51,7 +52,8 @@ Feature: Managing Pages
   Scenario: Browsing page without subpages
     Given a page "About Us" exists
     When I go to the "About Us" admin page
-    Then I should be able to see the content of "About Us"
+    Then I am logged in as "asd@asd.asd" with password "asdasd"
+    And I should be able to see the content of "About Us"
 
   Scenario: Toggling page visibility
     Given a page "About us" exists
