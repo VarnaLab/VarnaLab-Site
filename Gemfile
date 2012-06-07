@@ -47,8 +47,13 @@ group :test do
   gem 'turn', :require => false
 end
 
-if RUBY_VERSION < '1.9'
-  gem 'ruby-debug'
-else
-  gem 'ruby-debug19'
+unless ENV["CI"]
+  platform :ruby_18 do
+    gem 'rcov'
+    gem 'ruby-debug'
+  end
+  platform :ruby_19 do
+    gem 'simplecov'
+    gem 'ruby-debug19'
+  end
 end
