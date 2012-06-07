@@ -12,7 +12,7 @@ html
         = link_to unreviewed_admin_comments_path do
           | Comments
           = unreviewed_comments_badge
-        = link_to 'Events', '#'
+        = link_to 'Events', '/admin/events'
         = link_to 'Users', '/admin/users'
         - if user_signed_in?
           = link_to 'Logout', destroy_user_session_path, :method => :delete
