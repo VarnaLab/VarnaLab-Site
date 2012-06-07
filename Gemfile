@@ -4,8 +4,8 @@ gem 'rails', '~> 3.2.5'
 
 gem 'sqlite3'
 
-gem 'sass-rails', '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'uglifier'
 
 gem 'compass', :git => 'https://github.com/armstrjare/compass.git', :branch => 'fix_sprockets_static_asset_error'
