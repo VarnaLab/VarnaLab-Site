@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220133443) do
+ActiveRecord::Schema.define(:version => 20120606192039) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",                      :null => false
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(:version => 20111220133443) do
     t.boolean  "hidden",           :default => false, :null => false
     t.boolean  "reviewed",         :default => false, :null => false
   end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "author_id"
+    t.datetime "date"
+    t.string   "place"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "events", ["author_id"], :name => "index_events_on_author_id"
 
   create_table "pages", :force => true do |t|
     t.string   "name"
