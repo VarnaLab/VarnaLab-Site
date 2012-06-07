@@ -24,16 +24,13 @@ gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_neste
 
 gem 'devise'
 
-group :development, :test do
+group :test do
   gem 'jasmine'
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'shoulda-matchers'
-end
-
-group :test do
   gem 'minitest'
   gem 'launchy'
   gem 'capybara'
@@ -41,7 +38,7 @@ group :test do
   gem 'timecop'
   gem 'webrat'
   gem 'turn', :require => false
-  
+
   gem 'guard'
   gem 'guard-rspec', '~> 0.6.0'
   gem 'guard-bundler'
