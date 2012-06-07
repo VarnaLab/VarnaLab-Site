@@ -7,7 +7,7 @@ gem 'sqlite3'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-
+gem 'spork', '~> 0.9.0.rc9'
 gem 'compass', :git => 'https://github.com/armstrjare/compass.git', :branch => 'fix_sprockets_static_asset_error'
 
 gem 'therubyracer'
@@ -22,10 +22,7 @@ gem 'inherited_resources'
 gem 'kaminari'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
-gem 'spork', '~> 0.9.0.rc9'
-gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'devise'
-
 
 group :development, :test do
   gem 'jasmine'
